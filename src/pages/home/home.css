@@ -1,0 +1,98 @@
+:root{
+    --landing-text-color: #002E70;
+}
+
+.landing{
+    margin: 1rem;
+}
+
+.landing section{
+    margin-bottom: 3rem;
+}
+
+.landing h3{
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.hero{
+    position: relative;
+    height: 50vh;
+}
+
+.hero .img-wrapper{
+    max-width: 100vw;
+}
+
+.hero img{
+    height: 50vh;
+    border-radius: 1rem;
+    object-fit: cover;
+}
+
+.hero-content{
+    position: absolute;
+    width: 100%;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.hero-content h3{
+    font-size: 4rem;
+    font-weight: 400;
+    color: var(--landing-text-color);
+}
+
+.hero-content .btn{
+    width: fit-content;
+    padding: 1rem;
+    font-size: 1.3rem;
+}
+
+.btn .fa-long-arrow-alt-right{
+    margin-left: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.hero-content text{
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.category{
+    font-size: 3rem;
+    font-weight: 300;
+    width: fit-content;
+    position: relative;
+    color: var(--landing-text-color);
+}
+
+.categories-container{
+    margin-top: 2rem;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+}
+
+.categories-container:nth-child(n){
+    justify-items: center;
+}
+
+.category > text{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(234, 234, 236,0.4);
+    border-radius: 50%;
+    width: 20rem;
+    height: 20rem;
+}
