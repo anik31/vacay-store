@@ -2,6 +2,7 @@
     --landing-text-color: #002E70;
 }
 
+/* landing */
 .landing{
     margin: 1rem;
 }
@@ -15,6 +16,7 @@
     font-weight: 700;
 }
 
+/* hero */
 .hero{
     position: relative;
     height: 50vh;
@@ -63,14 +65,7 @@
     font-weight: 300;
 }
 
-.category{
-    font-size: 3rem;
-    font-weight: 300;
-    width: fit-content;
-    position: relative;
-    color: var(--landing-text-color);
-}
-
+/* categories */
 .categories-container{
     margin-top: 2rem;
     display: grid;
@@ -80,19 +75,4 @@
 
 .categories-container:nth-child(n){
     justify-items: center;
-}
-
-.category > text{
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgb(234, 234, 236,0.4);
-    border-radius: 50%;
-    width: 20rem;
-    height: 20rem;
 }
