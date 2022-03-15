@@ -28,7 +28,8 @@ export const products = [
     author: "Junaid Qureshi",
     price: 3000,
     categoryName: "Camera",
-    badge: "NEW"
+    badge: "NEW",
+    dealOfTheDay: true
   },
   {
     _id: uuid(),
@@ -52,7 +53,8 @@ export const products = [
     author: "Shiv Khera",
     price: 1000,
     categoryName: "Sunglasses",
-    badge: "TRENDING"
+    badge: "TRENDING",
+    dealOfTheDay: true
   },
   {
     _id: uuid(),
@@ -75,7 +77,8 @@ export const products = [
     },
     author: "Shiv Khera",
     price: 1000,
-    categoryName: "T-shirt"
+    categoryName: "T-shirt",
+    dealOfTheDay: true
   },
   {
     _id: uuid(),
@@ -108,7 +111,8 @@ export const products = [
     },
     author: "Shiv Khera",
     price: 1000,
-    categoryName: "Sanitizer"
+    categoryName: "Sanitizer",
+    dealOfTheDay: true
   },
   {
     _id: uuid(),
