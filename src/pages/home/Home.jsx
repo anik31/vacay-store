@@ -3,22 +3,9 @@ import { hero } from "../../assets";
 import "./home.css";
 import { CategoryCard, ProductCard } from "../../components";
 import { useProducts } from "../../context/product-context";
-import { useAsyncFetch } from "../../hooks/useAsyncFetch";
 
 export function Home(){
     const {state} = useProducts();
-
-    useAsyncFetch({
-        url:"/api/products",
-        dispatchType:"SET_PRODUCTS",
-        dispatchPayload:"products"
-    });
-    
-    useAsyncFetch({
-        url:"/api/categories",
-        dispatchType:"SET_CATEGORIES",
-        dispatchPayload:"categories"
-    });
 
     return (
         <main className="landing">

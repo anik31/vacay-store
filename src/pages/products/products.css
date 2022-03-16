@@ -1,0 +1,40 @@
+/* filter */
+.filter{
+    padding: 2rem;
+}
+
+.filter ul{
+    margin: 1.5rem 0;
+}
+
+.filter li{
+    list-style: none;
+    margin: 0.5rem 0;
+}
+
+.filter label{
+    font-weight: 400;
+}
+
+.filter-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* products listing */
+.product-page-container{
+    display: grid;
+    grid-template-columns: 16rem 1fr;
+}
+
+.product-page-container .page-title{
+    text-align: left;
+    margin-left: 2rem;
+    margin-bottom: 0;
+}
+
+.product-page-container .page-title span{
+    font-size: 1.2rem;
+    font-weight: 300;
+}

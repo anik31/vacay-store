@@ -21,3 +21,37 @@
     width: 20rem;
     height: 20rem;
 }
+
+/* product card */
+.card-price-content .text-sm{
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.card-vertical .card-price-content{
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.rating-container{
+    display: flex;
+    gap: 0.5rem;
+}
+
+.card-vertical .rating-pill-text{    
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+.card-vertical .rating-pill .fa-star{
+    font-size: 0.7rem;
+    color: var(--star-color);
+}
+
+.card-vertical .rating-pill{
+    padding: 0.25rem 0.5rem;
+    gap: 0.2rem;
+    border-radius: var(--border-radius);
+}
