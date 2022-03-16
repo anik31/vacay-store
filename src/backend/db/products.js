@@ -1,4 +1,5 @@
 import { v4 as uuid } from "uuid";
+import { cameraFuji, cameraNikon, maskKn95, maskSurgical, sanitizerHandmade, sanitizerPurell, sunglassRaybanRound, sunglassRaybanSquare, tshirtSummer, tshirtVacation } from "../../assets";
 
 /**
  * Product Database can be added here.
@@ -8,23 +9,121 @@ import { v4 as uuid } from "uuid";
 export const products = [
   {
     _id: uuid(),
-    title: "You Can WIN",
+    title: "Fuji Digital Camera",
+    image: {
+      src: cameraFuji,
+      alt: "Fuji Digital Camera"
+    },
     author: "Shiv Khera",
-    price: "5000",
-    categoryName: "non-fiction",
+    price: 5000,
+    categoryName: "Camera"
   },
   {
     _id: uuid(),
-    title: "You are Winner",
+    title: "Nikon DSLR Camera",
+    image: {
+      src: cameraNikon,
+      alt: "Nikon DSLR Camera"
+    },
     author: "Junaid Qureshi",
-    price: "3000",
-    categoryName: "horror",
+    price: 3000,
+    categoryName: "Camera",
+    badge: "NEW",
+    dealOfTheDay: true
   },
   {
     _id: uuid(),
-    title: "Think and Grow Rich",
+    title: "Rayban Round Sunglasses",
+    image: {
+      src: sunglassRaybanRound,
+      alt: "Rayban Round Sunglasses"
+    },
     author: "Shiv Khera",
-    price: "1000",
-    categoryName: "fiction",
+    price: 1000,
+    categoryName: "Sunglasses",
+    outOfStock: true
   },
+  {
+    _id: uuid(),
+    title: "Rayban Square Sunglasses",
+    image: {
+      src: sunglassRaybanSquare,
+      alt: "Rayban Square Sunglasses"
+    },
+    author: "Shiv Khera",
+    price: 1000,
+    categoryName: "Sunglasses",
+    badge: "TRENDING",
+    dealOfTheDay: true
+  },
+  {
+    _id: uuid(),
+    title: "Vacation T-shirt",
+    image: {
+      src: tshirtVacation,
+      alt: "Vacation T-shirt"
+    },
+    author: "Shiv Khera",
+    price: 1000,
+    categoryName: "T-shirt",
+    outOfStock: true
+  },
+  {
+    _id: uuid(),
+    title: "Summer T-shirt",
+    image: {
+      src: tshirtSummer,
+      alt: "Summer T-shirt"
+    },
+    author: "Shiv Khera",
+    price: 1000,
+    categoryName: "T-shirt",
+    dealOfTheDay: true
+  },
+  {
+    _id: uuid(),
+    title: "Surgical Mask",
+    image: {
+      src: maskSurgical,
+      alt: "Surgical Mask"
+    },
+    author: "Shiv Khera",
+    price: 1000,
+    categoryName: "Mask"
+  },
+  {
+    _id: uuid(),
+    title: "KN95 Mask",
+    image: {
+      src: maskKn95,
+      alt: "KN95 Mask"
+    },
+    author: "Shiv Khera",
+    price: 1000,
+    categoryName: "Mask"
+  },
+  {
+    _id: uuid(),
+    title: "Handmade sanitizer",
+    image: {
+      src: sanitizerHandmade,
+      alt: "Handmade sanitizer"
+    },
+    author: "Shiv Khera",
+    price: 1000,
+    categoryName: "Sanitizer",
+    dealOfTheDay: true
+  },
+  {
+    _id: uuid(),
+    title: "Purell sanitizer",
+    image: {
+      src: sanitizerPurell,
+      alt: "Purell sanitizer"
+    },
+    author: "Shiv Khera",
+    price: 1000,
+    categoryName: "Sanitizer",
+    outOfStock: true
+  }
 ];
