@@ -4,7 +4,7 @@ export function CategoryCard({value}){
     const {image, categoryName} = value;
     return (
         <Link to="/products" className="category-card">
-            <img className="img-round img-round-sizing" src={image.src} alt={image.alt} />
+            <img className="img-round img-round-sizing" src={image.src} alt={image.alt} loading="lazy" />
             <text>{categoryName}</text>
         </Link>
     );

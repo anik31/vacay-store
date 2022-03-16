@@ -3,39 +3,22 @@ import { hero } from "../../assets";
 import "./home.css";
 import { CategoryCard, ProductCard } from "../../components";
 import { useProducts } from "../../context/product-context";
-import { useEffect } from "react";
-import axios from "axios";
+import { useAsyncFetch } from "../../hooks/useAsyncFetch";
 
 export function Home(){
-    const {state, dispatch} = useProducts();
+    const {state} = useProducts();
 
-    /**
-     * useEffect to fetch products using API
-     */
-    useEffect(()=>{
-        (async function asyncProductFetch(){
-            try{
-                const {data} = await axios.get("/api/products");
-                dispatch({type:"SET_PRODUCTS", payload: data.products});
-            }catch(err){
-                console.log(err);
-            }
-        })();
-    },[]);
-
-    /**
-     * useEffect to fetch categories using API
-     */
-    useEffect(()=>{
-        (async function asyncCategoryFetch(){
-            try{
-                const {data} = await axios.get("/api/categories");
-                dispatch({type:"SET_CATEGORIES", payload: data.categories});
-            }catch(err){
-                console.log(err);
-            }
-        })();
-    },[]);
+    useAsyncFetch({
+        url:"/api/products",
+        dispatchType:"SET_PRODUCTS",
+        dispatchPayload:"products"
+    });
+    
+    useAsyncFetch({
+        url:"/api/categories",
+        dispatchType:"SET_CATEGORIES",
+        dispatchPayload:"categories"
+    });
 
     return (
         <main className="landing">
