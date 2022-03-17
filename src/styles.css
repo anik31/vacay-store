@@ -4,6 +4,16 @@
 /* vacay-ui css */
 @import url("https://vacay-ui.netlify.app/components/vacay.css");
 
+/* reset css */
+button{
+    background: transparent;
+}
+
+input[type="radio"],input[type="range"],input[type="checkbox"]{
+    cursor: pointer;
+}
+
+/* common css */
 .page-title{
     text-align: center;
     margin: 2rem 0;

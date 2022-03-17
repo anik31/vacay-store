@@ -1,5 +1,5 @@
 import { v4 as uuid } from "uuid";
-import { cameraFuji, cameraNikon, maskKn95, maskSurgical, sanitizerHandmade, sanitizerPurell, sunglassRaybanRound, sunglassRaybanSquare, tshirtSummer, tshirtVacation } from "../../assets";
+import { cameraFuji, cameraNikon, maskKn95, maskSurgical, sanitizerHandmade, sanitizerPurell, suitcaseAmericanTourister, suitcaseSkybags, sunglassRaybanRound, sunglassRaybanSquare, tshirtSummer, tshirtVacation } from "../../assets";
 
 /**
  * Product Database can be added here.
@@ -9,14 +9,52 @@ import { cameraFuji, cameraNikon, maskKn95, maskSurgical, sanitizerHandmade, san
 export const products = [
   {
     _id: uuid(),
+    title: "American Tourister Suitcase",
+    image: {
+      src: suitcaseAmericanTourister,
+      alt: "American Tourister Suitcase"
+    },
+    price: "9995",
+    originalPrice: "15000",
+    rating: {
+      value: "2",
+      count: "9966"
+    },
+    categoryName: "Suitcase",
+    outOfStock: false
+  },
+  {
+    _id: uuid(),
+    title: "Skybags Suitcase",
+    image: {
+      src: suitcaseSkybags,
+      alt: "Skybags Suitcase"
+    },
+    price: "11999",
+    originalPrice: "18999",
+    rating: {
+      value: "4.1",
+      count: "25111"
+    },
+    categoryName: "Suitcase",
+    badge: "BESTSELLER",
+    outOfStock: false
+  },
+  {
+    _id: uuid(),
     title: "Fuji Digital Camera",
     image: {
       src: cameraFuji,
       alt: "Fuji Digital Camera"
     },
-    author: "Shiv Khera",
-    price: 5000,
-    categoryName: "Camera"
+    price: "10000",
+    originalPrice: "18000",
+    rating: {
+      value: "3.5",
+      count: "12365"
+    },
+    categoryName: "Camera",
+    outOfStock: false
   },
   {
     _id: uuid(),
@@ -25,11 +63,16 @@ export const products = [
       src: cameraNikon,
       alt: "Nikon DSLR Camera"
     },
-    author: "Junaid Qureshi",
-    price: 3000,
+    price: "25000",
+    originalPrice: "40000",
+    rating: {
+      value: "4.5",
+      count: "255111"
+    },
     categoryName: "Camera",
     badge: "NEW",
-    dealOfTheDay: true
+    dealOfTheDay: true,
+    outOfStock: false
   },
   {
     _id: uuid(),
@@ -38,8 +81,12 @@ export const products = [
       src: sunglassRaybanRound,
       alt: "Rayban Round Sunglasses"
     },
-    author: "Shiv Khera",
-    price: 1000,
+    price: "2000",
+    originalPrice: "4000",
+    rating: {
+      value: "4.8",
+      count: "633122"
+    },
     categoryName: "Sunglasses",
     outOfStock: true
   },
@@ -50,11 +97,16 @@ export const products = [
       src: sunglassRaybanSquare,
       alt: "Rayban Square Sunglasses"
     },
-    author: "Shiv Khera",
-    price: 1000,
+    price: "1000",
+    originalPrice: "1500",
+    rating: {
+      value: "4",
+      count: "564456"
+    },
     categoryName: "Sunglasses",
     badge: "TRENDING",
-    dealOfTheDay: true
+    dealOfTheDay: true,
+    outOfStock: false
   },
   {
     _id: uuid(),
@@ -63,8 +115,12 @@ export const products = [
       src: tshirtVacation,
       alt: "Vacation T-shirt"
     },
-    author: "Shiv Khera",
-    price: 1000,
+    price: "500",
+    originalPrice: "1000",
+    rating: {
+      value: "3.9",
+      count: "89455"
+    },
     categoryName: "T-shirt",
     outOfStock: true
   },
@@ -75,10 +131,15 @@ export const products = [
       src: tshirtSummer,
       alt: "Summer T-shirt"
     },
-    author: "Shiv Khera",
-    price: 1000,
+    price: "800",
+    originalPrice: "1100",
+    rating: {
+      value: "4",
+      count: "46555"
+    },
     categoryName: "T-shirt",
-    dealOfTheDay: true
+    dealOfTheDay: true,
+    outOfStock: false
   },
   {
     _id: uuid(),
@@ -87,9 +148,14 @@ export const products = [
       src: maskSurgical,
       alt: "Surgical Mask"
     },
-    author: "Shiv Khera",
-    price: 1000,
-    categoryName: "Mask"
+    price: "50",
+    originalPrice: "80",
+    rating: {
+      value: "4.8",
+      count: "77889"
+    },
+    categoryName: "Mask",
+    outOfStock: false
   },
   {
     _id: uuid(),
@@ -98,9 +164,14 @@ export const products = [
       src: maskKn95,
       alt: "KN95 Mask"
     },
-    author: "Shiv Khera",
-    price: 1000,
-    categoryName: "Mask"
+    price: "200",
+    originalPrice: "300",
+    rating: {
+      value: "4.9",
+      count: "4655632"
+    },
+    categoryName: "Mask",
+    outOfStock: false
   },
   {
     _id: uuid(),
@@ -109,10 +180,15 @@ export const products = [
       src: sanitizerHandmade,
       alt: "Handmade sanitizer"
     },
-    author: "Shiv Khera",
-    price: 1000,
+    price: "250",
+    originalPrice: "400",
+    rating: {
+      value: "4.7",
+      count: "23654"
+    },
     categoryName: "Sanitizer",
-    dealOfTheDay: true
+    dealOfTheDay: true,
+    outOfStock: false
   },
   {
     _id: uuid(),
@@ -121,8 +197,12 @@ export const products = [
       src: sanitizerPurell,
       alt: "Purell sanitizer"
     },
-    author: "Shiv Khera",
-    price: 1000,
+    price: "500",
+    originalPrice: "1000",
+    rating: {
+      value: "3.5",
+      count: "4656565"
+    },
     categoryName: "Sanitizer",
     outOfStock: true
   }
