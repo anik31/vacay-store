@@ -1,27 +1,3 @@
-/* category card */
-.category-card{
-    font-size: 3rem;
-    font-weight: 300;
-    width: fit-content;
-    position: relative;
-    color: var(--landing-text-color);
-}
-
-.category-card > text{
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgb(234, 234, 236,0.4);
-    border-radius: 50%;
-    width: 20rem;
-    height: 20rem;
-}
-
 /* product card */
 .card-price-content .text-sm{
     font-size: 0.9rem;
@@ -54,4 +30,9 @@
     padding: 0.25rem 0.5rem;
     gap: 0.2rem;
     border-radius: var(--border-radius);
+}
+
+.card-vertical button{
+    font-size: 1rem;
+    font-weight: 600;
 }

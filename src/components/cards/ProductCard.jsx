@@ -1,4 +1,4 @@
-import { discountCalc } from "../../utils/discountCalc";
+import { discountCalc } from "../../utils";
 import "./cards.css";
 
 export function ProductCard({ value }) {
@@ -11,9 +11,9 @@ export function ProductCard({ value }) {
         <img src={image.src} className="img-responsive" alt={image.alt} />
         <h5 className="card-title">{title}</h5>
         <div className="rating-container">
-          <div class="rating-pill">
-            <span class="rating-pill-text">{rating.value}</span>
-            <i class="fas fa-star"></i>
+          <div className="rating-pill">
+            <span className="rating-pill-text">{rating.value}</span>
+            <i className="fas fa-star"></i>
           </div>
           <span className="text-gray text-sm">({rating.count})</span>
         </div>

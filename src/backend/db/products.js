@@ -1,5 +1,5 @@
 import { v4 as uuid } from "uuid";
-import { cameraFuji, cameraNikon, maskKn95, maskSurgical, sanitizerHandmade, sanitizerPurell, sunglassRaybanRound, sunglassRaybanSquare, tshirtSummer, tshirtVacation } from "../../assets";
+import { cameraFuji, cameraNikon, maskKn95, maskSurgical, sanitizerHandmade, sanitizerPurell, suitcaseAmericanTourister, suitcaseSkybags, sunglassRaybanRound, sunglassRaybanSquare, tshirtSummer, tshirtVacation } from "../../assets";
 
 /**
  * Product Database can be added here.
@@ -7,6 +7,39 @@ import { cameraFuji, cameraNikon, maskKn95, maskSurgical, sanitizerHandmade, san
  * */
 
 export const products = [
+  {
+    _id: uuid(),
+    title: "American Tourister Suitcase",
+    image: {
+      src: suitcaseAmericanTourister,
+      alt: "American Tourister Suitcase"
+    },
+    price: "9995",
+    originalPrice: "15000",
+    rating: {
+      value: "2",
+      count: "9966"
+    },
+    categoryName: "Suitcase",
+    outOfStock: false
+  },
+  {
+    _id: uuid(),
+    title: "Skybags Suitcase",
+    image: {
+      src: suitcaseSkybags,
+      alt: "Skybags Suitcase"
+    },
+    price: "11999",
+    originalPrice: "18999",
+    rating: {
+      value: "4.1",
+      count: "25111"
+    },
+    categoryName: "Suitcase",
+    badge: "BESTSELLER",
+    outOfStock: false
+  },
   {
     _id: uuid(),
     title: "Fuji Digital Camera",
@@ -20,7 +53,8 @@ export const products = [
       value: "3.5",
       count: "12365"
     },
-    categoryName: "Camera"
+    categoryName: "Camera",
+    outOfStock: false
   },
   {
     _id: uuid(),
@@ -37,7 +71,8 @@ export const products = [
     },
     categoryName: "Camera",
     badge: "NEW",
-    dealOfTheDay: true
+    dealOfTheDay: true,
+    outOfStock: false
   },
   {
     _id: uuid(),
@@ -70,7 +105,8 @@ export const products = [
     },
     categoryName: "Sunglasses",
     badge: "TRENDING",
-    dealOfTheDay: true
+    dealOfTheDay: true,
+    outOfStock: false
   },
   {
     _id: uuid(),
@@ -102,7 +138,8 @@ export const products = [
       count: "46555"
     },
     categoryName: "T-shirt",
-    dealOfTheDay: true
+    dealOfTheDay: true,
+    outOfStock: false
   },
   {
     _id: uuid(),
@@ -117,7 +154,8 @@ export const products = [
       value: "4.8",
       count: "77889"
     },
-    categoryName: "Mask"
+    categoryName: "Mask",
+    outOfStock: false
   },
   {
     _id: uuid(),
@@ -132,7 +170,8 @@ export const products = [
       value: "4.9",
       count: "4655632"
     },
-    categoryName: "Mask"
+    categoryName: "Mask",
+    outOfStock: false
   },
   {
     _id: uuid(),
@@ -148,7 +187,8 @@ export const products = [
       count: "23654"
     },
     categoryName: "Sanitizer",
-    dealOfTheDay: true
+    dealOfTheDay: true,
+    outOfStock: false
   },
   {
     _id: uuid(),
