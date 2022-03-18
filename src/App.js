@@ -1,9 +1,9 @@
 import { Navbar } from "./components";
 import "./styles.css";
 import { Routes, Route } from "react-router-dom";
-import {Home, Products} from "./pages";
+import {Home, Products, Cart} from "./pages";
 import Mockman from "mockman-js";
-import {useAsyncFetch} from "./hooks/useAsyncFetch";
+import {useAsyncFetch, useLogin} from "./hooks";
 
 function App() {
   
@@ -19,12 +19,15 @@ function App() {
       dispatchPayload:"categories"
   });
 
+  useLogin();
+
   return (
     <div className="App">
         <Navbar/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/mockman" element={<Mockman />} />
         </Routes>
     </div>
