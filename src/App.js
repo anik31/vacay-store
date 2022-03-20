@@ -1,7 +1,7 @@
 import { Navbar } from "./components";
 import "./styles.css";
 import { Routes, Route } from "react-router-dom";
-import {Home, Products, Cart} from "./pages";
+import {Home, Products, Cart, Wishlist} from "./pages";
 import Mockman from "mockman-js";
 import {useAsyncFetch, useLogin} from "./hooks";
 import { useEffect } from "react";
@@ -37,6 +37,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/mockman" element={<Mockman />} />
         </Routes>
     </div>
