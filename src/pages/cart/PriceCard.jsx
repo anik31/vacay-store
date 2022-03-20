@@ -1,7 +1,7 @@
 import "./cart.css";
 
 export function PriceCard({value}){
-    const {quantity, price, totalPrice, discount} = value;
+    const {quantity, markedPrice, totalPrice, discount} = value;
 
     return (
         <aside className="price-card box-shadow">
@@ -10,7 +10,7 @@ export function PriceCard({value}){
             <ul>
                 <li>
                     <span>Price ({quantity} items)</span>
-                    <span>Rs. {price}</span>
+                    <span>Rs. {markedPrice}</span>
                 </li>
                 <li>
                     <span>Discount</span>

@@ -1,5 +1,5 @@
 import "./cart.css";
-import { removeFromCart } from "../../utils";
+import { removeFromCart, updateItemQuantity } from "../../utils";
 import { useProducts } from "../../context/product-context";
 
 
@@ -20,9 +20,9 @@ export function CartCard({value}){
                 </div>
                 <div className="product-count">
                     <span>Quantity : </span>
-                    <button disabled={qty===1}><i className="fas fa-minus"></i></button>
+                    <button disabled={qty===1} onClick={()=>updateItemQuantity(_id, dispatch, "decrement")}><i className="fas fa-minus"></i></button>
                     <span className="counter">{qty}</span>
-                    <button><i className="fas fa-plus"></i></button>
+                    <button onClick={()=>updateItemQuantity(_id, dispatch, "increment")}><i className="fas fa-plus"></i></button>
                 </div>
                 <div className="card-btn-wrapper">
                     <button className="btn btn-primary-outline">SAVE FOR LATER</button>

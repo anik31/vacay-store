@@ -48,3 +48,20 @@ export const removeFromCart = async(id, dispatch) => {
       console.log(err);
     }
 }
+
+export const updateItemQuantity = async(id, dispatch, updateType) => {
+    try{
+      const {status, data} = await axios({
+        method: "post",
+        url: `/api/user/cart/${id}`,
+        data: {action: {type: updateType}},
+        headers: {authorization: localStorage.getItem("encodedToken")}
+      });
+      console.log("Calling api update cart");
+      if(status===200){
+        dispatch({type:"SET_CART", payload: data.cart})
+      }
+    }catch(err){
+      console.log(err);
+    }
+}
