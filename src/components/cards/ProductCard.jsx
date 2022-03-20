@@ -1,8 +1,15 @@
+import { useProducts } from "../../context/product-context";
 import { discountCalc } from "../../utils";
+import { useNavigate } from "react-router-dom";
 import "./cards.css";
+import { addToCart } from "../../utils";
 
 export function ProductCard({ value }) {
-  const {outOfStock, badge, image, title, price, originalPrice, rating} = value;
+  const {_id ,outOfStock, badge, image, title, price, originalPrice, rating} = value;
+  const discount = discountCalc(price,originalPrice);
+  const {state, dispatch} = useProducts();
+  const navigate = useNavigate();
+
     return (
       <div className="card card-vertical">
         {outOfStock && <span className="card-overlay">OUT OF STOCK</span>}
@@ -20,9 +27,11 @@ export function ProductCard({ value }) {
         <div className="card-price-content">
           <span className="card-price">Rs. {price}</span>
           <del className="text-gray">Rs. {originalPrice}</del>
-          <span className="text-primary text-sm">{discountCalc(price,originalPrice)}% off</span>
+          <span className="text-primary text-sm">{discount}% off</span>
         </div>
-        <button className="btn btn-primary">Add to cart</button>
+        {state.cart.filter(item=> item._id===_id).length===1
+        ?<button className="btn btn-primary" onClick={()=>navigate("/cart")}>Go to cart</button>
+        :<button className="btn btn-primary" onClick={()=>addToCart({...value,discount:discount},dispatch)}>Add to cart</button>}
       </div>
     );
 };

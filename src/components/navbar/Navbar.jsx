@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useProducts } from "../../context/product-context";
 
 export function Navbar(){
+    const {state} = useProducts();
+
     return (
         <header className="header box-shadow">
         <div className="hamburger-logo-wrapper">
@@ -36,7 +39,7 @@ export function Navbar(){
                     <Link to="/cart" className="btn btn-secondary-icon-text-no-border">
                         <div className="badge-wrapper">
                             <i className="btn-icon fas fa-shopping-cart"></i>
-                            <span className="badge badge-number">5</span>
+                            {state.cart.length!==0 && <span className="badge badge-number">{state.cart.length}</span>}
                         </div>
                         Cart
                     </Link>

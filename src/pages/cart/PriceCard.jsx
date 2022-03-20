@@ -1,18 +1,20 @@
 import "./cart.css";
 
-export function PriceCard(){
+export function PriceCard({value}){
+    const {quantity, price, totalPrice, discount} = value;
+
     return (
         <aside className="price-card box-shadow">
             <h4>PRICE DETAILS</h4>
             <hr/>
             <ul>
                 <li>
-                    <span>Price (2 items)</span>
-                    <span>Rs. 4999</span>
+                    <span>Price ({quantity} items)</span>
+                    <span>Rs. {price}</span>
                 </li>
                 <li>
                     <span>Discount</span>
-                    <span className="text-primary">- Rs. 999</span>
+                    <span className="text-primary">- Rs. {discount}</span>
                 </li>
                 <li>
                     <span>Delivery Charges</span>
@@ -22,10 +24,10 @@ export function PriceCard(){
             <hr/>
             <div className="total-amount">
                 <span>TOTAL AMOUNT</span>
-                <span>Rs. 4999</span>
+                <span>Rs. {totalPrice}</span>
             </div>
             <hr/>
-            <p className="text-primary">You will save Rs. <span>999</span> on this order</p>
+            <p className="text-primary">You will save Rs. {discount} on this order</p>
             <button className="btn btn-primary">PLACE ORDER</button>
         </aside>
     );

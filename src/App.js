@@ -4,9 +4,14 @@ import { Routes, Route } from "react-router-dom";
 import {Home, Products, Cart} from "./pages";
 import Mockman from "mockman-js";
 import {useAsyncFetch, useLogin} from "./hooks";
+import { useEffect } from "react";
+import { useProducts } from "./context/product-context";
+import { getCart } from "./utils";
+
 
 function App() {
-  
+  const {dispatch} = useProducts();
+
   useAsyncFetch({
     url:"/api/products",
     dispatchType:"SET_PRODUCTS",
@@ -20,6 +25,10 @@ function App() {
   });
 
   useLogin();
+
+  useEffect(()=>{
+      getCart(dispatch);
+  },[])
 
   return (
     <div className="App">
