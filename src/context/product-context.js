@@ -12,7 +12,8 @@ const initialState = {
         rating: null,
         priceRange: 25000,
         includeOutOfStock: false,
-    }
+    },
+    cart: []
 };
 
 const ProductProvider = ({children}) => {
