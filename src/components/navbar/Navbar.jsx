@@ -33,7 +33,7 @@ export function Navbar(){
                 <li><Link to="/login" className="btn btn-primary">Login</Link></li>
                 <li className="badge-wrapper">
                     <Link to="/wishlist"><i className="btn-icon far fa-heart"></i></Link>
-                    <span className="badge badge-number">5</span>
+                    {state.wishlist.length!==0 && <span className="badge badge-number">{state.wishlist.length}</span>}
                 </li>
                 <li>
                     <Link to="/cart" className="btn btn-secondary-icon-text-no-border">

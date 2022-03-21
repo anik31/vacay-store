@@ -1,11 +1,11 @@
 import "./cart.css";
-import { removeFromCart, updateItemQuantity } from "../../utils";
+import { removeFromCart, updateItemQuantity, addToWishlist } from "../../utils";
 import { useProducts } from "../../context/product-context";
 
 
 export function CartCard({value}){
     const {_id ,image, title, price, originalPrice, qty, discount} = value;
-    const {dispatch} = useProducts();
+    const {state, dispatch} = useProducts();
     return (
         <div className="card card-horizontal card-horizontal-md">
             <img src={image.src} className="img-responsive" alt={image.alt} />
@@ -25,7 +25,11 @@ export function CartCard({value}){
                     <button onClick={()=>updateItemQuantity(_id, dispatch, "increment")}><i className="fas fa-plus"></i></button>
                 </div>
                 <div className="card-btn-wrapper">
-                    <button className="btn btn-primary-outline">SAVE FOR LATER</button>
+                    <button className="btn btn-primary-outline" 
+                    onClick={()=>{
+                        state.wishlist.filter(item=> item._id===_id).length!==1 && addToWishlist(value, dispatch)
+                        removeFromCart(_id, dispatch)}}
+                        >SAVE FOR LATER</button>
                     <button className="btn btn-primary-outline" onClick={()=>removeFromCart(_id, dispatch)}>REMOVE</button>
                 </div>
                 </div>

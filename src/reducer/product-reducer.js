@@ -44,6 +44,8 @@ export function productReducer(state, action){
             }};
         case "SET_CART":
             return {...state, cart: action.payload};
+        case "SET_WISHLIST":
+            return {...state, wishlist: action.payload};
         default:
             return state;
     }
