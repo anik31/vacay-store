@@ -3,11 +3,11 @@ import {Link} from "react-router-dom";
 import {useState} from "react";
 
 export function Login(){
-    const [visibility, setVisibility] = useState(false);
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     
-    const showHideHandler = (e) => {
+    const passwordVisibilityHandler = (e) => {
         e.preventDefault();
-        setVisibility(prev=> !prev);
+        setIsPasswordVisible(prev=> !prev);
     }
 
     return (
@@ -21,9 +21,9 @@ export function Login(){
             <div className="input input-text">
                 <label>Password</label>
                 <div className="password-wrapper">
-                    <input type={visibility?"text":"password"} placeholder="password" />
-                    <button onClick={showHideHandler}>
-                    {visibility
+                    <input type={isPasswordVisible?"text":"password"} placeholder="password" />
+                    <button onClick={passwordVisibilityHandler}>
+                    {isPasswordVisible
                     ? <i className="far fa-eye-slash"></i>
                     : <i className="far fa-eye"></i>}
                     </button>

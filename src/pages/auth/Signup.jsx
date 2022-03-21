@@ -3,17 +3,17 @@ import "./auth.css";
 import {useState} from "react";
 
 export function Signup(){
-    const [visibility, setVisibility] = useState(false);
-    const [visibility1, setVisibility1] = useState(false);
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
 
-    const showHideHandler = (e) => {
+    const passwordVisibilityHandler = (e) => {
         e.preventDefault();
-        setVisibility(prev=> !prev);
+        setIsPasswordVisible(prev=> !prev);
     }
 
-    const showHideHandler1 = (e) => {
+    const confirmPasswordVisibilityHandler = (e) => {
         e.preventDefault();
-        setVisibility1(prev=> !prev);
+        setIsConfirmPasswordVisible(prev=> !prev);
     }
     
     return (
@@ -35,9 +35,9 @@ export function Signup(){
         <div className="input input-text">
             <label>Password</label>
             <div className="password-wrapper">
-                <input type={visibility?"text":"password"} placeholder="password" />
-                <button onClick={showHideHandler}>
-                {visibility
+            <input type={isPasswordVisible?"text":"password"} placeholder="password" />
+                <button onClick={passwordVisibilityHandler}>
+                {isPasswordVisible
                 ? <i className="far fa-eye-slash"></i>
                 : <i className="far fa-eye"></i>}
                 </button>
@@ -46,9 +46,9 @@ export function Signup(){
         <div className="input input-text">
             <label>Confirm password</label>
             <div className="password-wrapper">
-                <input type={visibility1?"text":"password"} placeholder="confirm password" />
-                <button onClick={showHideHandler1}>
-                {visibility1
+            <input type={isConfirmPasswordVisible?"text":"password"} placeholder="confirm password" />
+                <button onClick={confirmPasswordVisibilityHandler}>
+                {isConfirmPasswordVisible
                 ? <i className="far fa-eye-slash"></i>
                 : <i className="far fa-eye"></i>}
                 </button>
