@@ -3,6 +3,7 @@ import { discountCalc } from "../../utils";
 import { useNavigate } from "react-router-dom";
 import "./cards.css";
 import { addToCart } from "../../utils";
+import { addToWishlist, removeFromWishlist } from "../../utils";
 
 export function ProductCard({ value }) {
   const {_id ,outOfStock, badge, image, title, price, originalPrice, rating} = value;
@@ -14,7 +15,9 @@ export function ProductCard({ value }) {
       <div className="card card-vertical">
         {outOfStock && <span className="card-overlay">OUT OF STOCK</span>}
         {badge && <span className="card-badge">{badge}</span>}
-        <i className="far fa-heart"></i>
+        {state.wishlist.filter(item=>item._id===_id).length===1
+        ? <i className="red-heart fas fa-heart" onClick={()=>removeFromWishlist(_id, dispatch)}></i>
+        : <i className="far fa-heart" onClick={()=>addToWishlist(value, dispatch)}></i>}
         <img src={image.src} className="img-responsive" alt={image.alt} />
         <h5 className="card-title">{title}</h5>
         <div className="rating-container">

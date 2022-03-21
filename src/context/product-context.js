@@ -13,7 +13,8 @@ const initialState = {
         priceRange: 25000,
         includeOutOfStock: false,
     },
-    cart: []
+    cart: [],
+    wishlist: []
 };
 
 const ProductProvider = ({children}) => {

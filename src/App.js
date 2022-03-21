@@ -6,7 +6,7 @@ import Mockman from "mockman-js";
 import {useAsyncFetch, useLogin} from "./hooks";
 import { useEffect } from "react";
 import { useProducts } from "./context/product-context";
-import { getCart } from "./utils";
+import { getCart, getWishlist } from "./utils";
 
 
 function App() {
@@ -28,6 +28,7 @@ function App() {
 
   useEffect(()=>{
       getCart(dispatch);
+      getWishlist(dispatch);
   },[])
 
   return (

@@ -65,3 +65,52 @@ export const updateItemQuantity = async(id, dispatch, updateType) => {
       console.log(err);
     }
 }
+
+export const getWishlist = async(dispatch) => {
+  try{
+    const {status, data} = await axios({
+      method: "get",
+      url: "/api/user/wishlist",
+      headers: {authorization: localStorage.getItem("encodedToken")}
+    });
+    console.log("Calling api get wishlist");
+    if(status===200){
+      dispatch({type:"SET_WISHLIST", payload: data.wishlist})
+    }
+  }catch(err){
+    console.log(err);
+  }
+}
+
+export const addToWishlist = async(postData, dispatch) => {
+    try{
+      const {status, data} = await axios({
+        method: "post",
+        url: "/api/user/wishlist",
+        data: {product: postData},
+        headers: {authorization: localStorage.getItem("encodedToken")}
+      });
+      console.log("Calling api add to wishlist");
+      if(status===201){
+        dispatch({type:"SET_WISHLIST", payload: data.wishlist})
+      }
+    }catch(err){
+      console.log(err);
+    }
+}
+
+export const removeFromWishlist = async(id, dispatch) => {
+    try{
+      const {status, data} = await axios({
+        method: "delete",
+        url: `/api/user/wishlist/${id}`,
+        headers: {authorization: localStorage.getItem("encodedToken")}
+      });
+      console.log("Calling api remove from wishlist");
+      if(status===200){
+        dispatch({type:"SET_WISHLIST", payload: data.wishlist})
+      }
+    }catch(err){
+      console.log(err);
+    }
+}
