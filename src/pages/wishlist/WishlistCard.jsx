@@ -28,7 +28,7 @@ export function WishlistCard({value}){
                 <button 
                 className="btn btn-primary" 
                 onClick={()=>{
-                    state.cart.filter(item=>item._id===_id).length===1
+                    state.cart.find(item=>item._id===_id)
                     ? updateItemQuantity(_id, dispatch, "increment")
                     : addToCart(value,dispatch)
                     }}

@@ -15,7 +15,7 @@ export function ProductCard({ value }) {
       <div className="card card-vertical">
         {outOfStock && <span className="card-overlay">OUT OF STOCK</span>}
         {badge && <span className="card-badge">{badge}</span>}
-        {state.wishlist.filter(item=>item._id===_id).length===1
+        {state.wishlist.find(item=>item._id===_id)
         ? <i className="red-heart fas fa-heart" onClick={()=>removeFromWishlist(_id, dispatch)}></i>
         : <i className="far fa-heart" onClick={()=>addToWishlist(value, dispatch)}></i>}
         <img src={image.src} className="img-responsive" alt={image.alt} />
@@ -32,7 +32,7 @@ export function ProductCard({ value }) {
           <del className="text-gray">Rs. {originalPrice}</del>
           <span className="text-primary text-sm">{discount}% off</span>
         </div>
-        {state.cart.filter(item=> item._id===_id).length===1
+        {state.cart.find(item=> item._id===_id)
         ?<button className="btn btn-primary" onClick={()=>navigate("/cart")}>Go to cart</button>
         :<button className="btn btn-primary" onClick={()=>addToCart({...value,discount:discount},dispatch)}>Add to cart</button>}
       </div>

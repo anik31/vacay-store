@@ -10,7 +10,6 @@ export function useLogin(){
                     password: "johnDoe123"
                 })
                 localStorage.setItem("encodedToken",data.encodedToken);
-                console.log("login success");
             }catch(err){
                 console.log(err)
             }
