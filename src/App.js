@@ -1,7 +1,7 @@
 import { Navbar } from "./components";
 import "./styles.css";
 import { Routes, Route } from "react-router-dom";
-import {Home, Products, Cart, Wishlist, Login, Signup} from "./pages";
+import {Home, Products, Cart, Wishlist, Login, Signup, Page404} from "./pages";
 import Mockman from "mockman-js";
 import {useAsyncFetch, useLogin} from "./hooks";
 import { useEffect } from "react";
@@ -41,6 +41,7 @@ function App() {
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="*" element={<Page404/>} />
           <Route path="/mockman" element={<Mockman />} />
         </Routes>
     </div>
