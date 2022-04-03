@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useProducts } from "../../context/product-context";
+import { logo } from "../../assets";
+import "./navbar.css";
 
 export function Navbar(){
     const {state} = useProducts();
@@ -8,7 +10,7 @@ export function Navbar(){
         <header className="header box-shadow">
         <div className="hamburger-logo-wrapper">
             <button><i className="fas fa-bars"></i></button>
-            <h2 className="logo">vacay</h2>
+            <Link to="/"><img src={logo} alt="vacay-store-logo" className="logo" /></Link>
         </div>
         <nav className="hamburger-menu">
             <ul>

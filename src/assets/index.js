@@ -1,3 +1,4 @@
+import logo from "./images/logo.png";
 import hero from "./images/hero.jpg";
 import cameraFuji from "./images/camera-fuji.jpg";
 import cameraNikon from "./images/camera-nikon.jpg";
@@ -14,4 +15,4 @@ import sunglassRaybanSquare from "./images/sunglass-rayban-square.jpg";
 import tshirtSummer from "./images/tshirt-summer.jpg";
 import tshirtVacation from "./images/tshirt-vacation.jpg";
 
-export {hero,cameraFuji,cameraNikon,mask,maskKn95,maskSurgical,sanitizer,sanitizerHandmade,sanitizerPurell,suitcaseSkybags,suitcaseAmericanTourister,sunglassRaybanRound,sunglassRaybanSquare,tshirtSummer,tshirtVacation};
+export {logo,hero,cameraFuji,cameraNikon,mask,maskKn95,maskSurgical,sanitizer,sanitizerHandmade,sanitizerPurell,suitcaseSkybags,suitcaseAmericanTourister,sunglassRaybanRound,sunglassRaybanSquare,tshirtSummer,tshirtVacation};
