@@ -7,7 +7,7 @@
 <p align="center"><a href="https://vacay-store-react.netlify.app/">Visit website »</a></p>
 
 ## Introduction
-Vacay store is an ecommerce web application for buying vacation essentials. Vacay store is publicly hosted on Netlify at https://vacay-store.netlify.app/.
+Vacay store is an ecommerce web application for buying vacation essentials. Vacay store is publicly hosted on Netlify at https://vacay-store-react.netlify.app/.
 
 ## Demo
 ![image](https://user-images.githubusercontent.com/56336326/154792320-b1d39258-9e04-4f3f-b624-53c65d66eb05.png)
