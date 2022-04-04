@@ -101,3 +101,22 @@
     width: 20rem;
     height: 20rem;
 }
+
+/* || media queries */
+
+@media only screen and (max-width:640px){
+    .hero-content h3{
+        font-size: 3.5rem;
+    }
+    
+    .landing{
+        margin: 0.5rem;
+    }
+}
+
+@media only screen and (max-width:480px){    
+    
+    .hero-content h3{
+        font-size: 3rem;
+    }
+}

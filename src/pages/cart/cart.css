@@ -73,3 +73,26 @@
 .total-amount{
     font-weight: 700;
 }
+
+/* || media queries */
+
+@media only screen and (max-width:1280px){
+    .grid-container-cart{
+        margin: 0 1rem;
+    }
+}
+
+@media only screen and (max-width:1024px){
+    .grid-container-cart{
+        margin: 0 0.5rem;
+    }
+}
+
+@media only screen and (max-width:900px){
+    .grid-container-cart{
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "cards" 
+        "price";
+    }
+}
