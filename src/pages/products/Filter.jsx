@@ -1,15 +1,16 @@
-import { useProducts } from "../../context/product-context";
+import { useProducts } from "../../context";
 
 export function Filter(){
-    const {state,dispatch} = useProducts();
-    const {sortBy, category, rating, priceRange, includeOutOfStock} = state.filters;
+    const {productState, productDispatch} = useProducts();
+    const {sortBy, category, rating, priceRange, includeOutOfStock} = productState.filters;
+    
     return (
         <aside className="filter">
                 <div className="filter-header">
                     <h3>Filters</h3>
                     <button 
                     className="btn btn-primary-link" 
-                    onClick={()=>dispatch({type:"CLEAR_ALL_FILTERS"})}>CLEAR ALL</button>
+                    onClick={()=>productDispatch({type:"CLEAR_ALL_FILTERS"})}>CLEAR ALL</button>
                 </div>
                 <ul>
                     <h4>Price</h4>
@@ -21,7 +22,7 @@ export function Filter(){
                         min="5000" 
                         max="25000" 
                         step="5000" 
-                        onChange={e=>dispatch({type:"FILTER_BY_PRICE_RANGE",payload:Number(e.target.value)})} />
+                        onChange={e=>productDispatch({type:"FILTER_BY_PRICE_RANGE",payload:Number(e.target.value)})} />
                         <datalist id="tickmarks">
                             <option value="5000" label="5000"></option>
                             <option value="10000" label="10000"></option>
@@ -33,7 +34,7 @@ export function Filter(){
                 </ul>
                 <ul>
                     <h4>Category</h4>
-                    {state.categories.map(categoryItem=>{
+                    {productState.categories.map(categoryItem=>{
                         const {_id, categoryName} = categoryItem;
                         return (
                             <li key={_id} className="input">
@@ -41,7 +42,7 @@ export function Filter(){
                                     <input 
                                         type="checkbox" 
                                         checked={category.includes(categoryName)} 
-                                        onChange={()=>dispatch({type:"FILTER_BY_CATEGORY",payload:categoryName})}
+                                        onChange={()=>productDispatch({type:"FILTER_BY_CATEGORY",payload:categoryName})}
                                     />
                                 {categoryName}</label>
                             </li>
@@ -56,7 +57,7 @@ export function Filter(){
                                 type="radio" 
                                 name="rating" 
                                 checked={rating===4} 
-                                onChange={()=>dispatch({type:"FILTER_BY_RATING",payload:4})} 
+                                onChange={()=>productDispatch({type:"FILTER_BY_RATING",payload:4})} 
                             />
                         4 Stars & above</label>
                     </li>
@@ -66,7 +67,7 @@ export function Filter(){
                                 type="radio" 
                                 name="rating" 
                                 checked={rating===3} 
-                                onChange={()=>dispatch({type:"FILTER_BY_RATING",payload:3})} 
+                                onChange={()=>productDispatch({type:"FILTER_BY_RATING",payload:3})} 
                             />
                         3 Stars & above</label>
                     </li>
@@ -76,7 +77,7 @@ export function Filter(){
                                 type="radio" 
                                 name="rating" 
                                 checked={rating===2} 
-                                onChange={()=>dispatch({type:"FILTER_BY_RATING",payload:2})} 
+                                onChange={()=>productDispatch({type:"FILTER_BY_RATING",payload:2})} 
                             />
                         2 Stars & above</label>
                     </li>
@@ -86,7 +87,7 @@ export function Filter(){
                                 type="radio" 
                                 name="rating" 
                                 checked={rating===1} 
-                                onChange={()=>dispatch({type:"FILTER_BY_RATING",payload:1})} 
+                                onChange={()=>productDispatch({type:"FILTER_BY_RATING",payload:1})} 
                             />
                         1 Stars & above</label>
                     </li>
@@ -99,7 +100,7 @@ export function Filter(){
                                 type="radio" 
                                 name="sort-by" 
                                 checked={sortBy==="FEATURED"} 
-                                onChange={()=>dispatch({type:"SORT_PRODUCTS", payload:"FEATURED"})} 
+                                onChange={()=>productDispatch({type:"SORT_PRODUCTS", payload:"FEATURED"})} 
                             />
                         Featured</label>
                     </li>
@@ -109,7 +110,7 @@ export function Filter(){
                                 type="radio" 
                                 name="sort-by" 
                                 checked={sortBy==="LOW_TO_HIGH"} 
-                                onChange={()=>dispatch({type:"SORT_PRODUCTS", payload:"LOW_TO_HIGH"})} 
+                                onChange={()=>productDispatch({type:"SORT_PRODUCTS", payload:"LOW_TO_HIGH"})} 
                             />
                         Price - Low to High</label>
                     </li>
@@ -119,7 +120,7 @@ export function Filter(){
                                 type="radio" 
                                 name="sort-by" 
                                 checked={sortBy==="HIGH_TO_LOW"} 
-                                onChange={()=>dispatch({type:"SORT_PRODUCTS", payload:"HIGH_TO_LOW"})} 
+                                onChange={()=>productDispatch({type:"SORT_PRODUCTS", payload:"HIGH_TO_LOW"})} 
                             />
                         Price - High to Low</label>
                     </li>
@@ -131,7 +132,7 @@ export function Filter(){
                             <input 
                                 type="checkbox" 
                                 checked={includeOutOfStock} 
-                                onChange={()=>dispatch({type:"FILTER_BY_OUT_OF_STOCK",payload:!includeOutOfStock})} 
+                                onChange={()=>productDispatch({type:"FILTER_BY_OUT_OF_STOCK",payload:!includeOutOfStock})} 
                             />
                         Include out of stock</label>
                     </li>

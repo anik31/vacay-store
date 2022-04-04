@@ -1,16 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import { useProducts } from "../../context/product-context";
+import { useProducts } from "../../context";
 
 export function CategoryCard({value}){
     const {categoryName,image} = value;
-    const {dispatch} = useProducts();
+    const {productDispatch} = useProducts();
     const navigate = useNavigate();
 
     return (
         <div 
         className="category-card" 
         onClick={()=>{
-            dispatch({type:"FILTER_BY_CATEGORY", payload:categoryName});
+            productDispatch({type:"FILTER_BY_CATEGORY", payload:categoryName});
             navigate("/products");
             }}
         >

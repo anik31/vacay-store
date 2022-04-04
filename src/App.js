@@ -3,32 +3,23 @@ import "./styles.css";
 import { Routes, Route } from "react-router-dom";
 import {Home, Products, Cart, Wishlist, Login, Signup, Page404} from "./pages";
 import Mockman from "mockman-js";
-import {useAsyncFetch, useLogin} from "./hooks";
+import {useLogin} from "./hooks";
 import { useEffect } from "react";
-import { useProducts } from "./context/product-context";
-import { getCart, getWishlist } from "./utils";
+import { useProducts, useCart, useWishlist } from "./context";
 
 
 function App() {
-  const {dispatch} = useProducts();
-
-  useAsyncFetch({
-    url:"/api/products",
-    dispatchType:"SET_PRODUCTS",
-    dispatchPayload:"products"
-  });
-
-  useAsyncFetch({
-      url:"/api/categories",
-      dispatchType:"SET_CATEGORIES",
-      dispatchPayload:"categories"
-  });
+  const {getProducts, getCategories} = useProducts();
+  const {getCartData} = useCart();
+  const {getWishlistData} = useWishlist();
 
   useLogin();
 
   useEffect(()=>{
-      getCart(dispatch);
-      getWishlist(dispatch);
+    getProducts();
+    getCategories();
+    getCartData();
+    getWishlistData();
   },[])
 
   return (

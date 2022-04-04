@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { makeServer } from "./server";
 import {BrowserRouter} from "react-router-dom";
-import { ProductProvider } from "./context/product-context";
+import { ProductProvider, CartProvider, WishlistProvider } from "./context";
 
 // Call make Server
 makeServer();
@@ -12,7 +12,11 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <ProductProvider>
-        <App />
+        <CartProvider>
+          <WishlistProvider>
+            <App />
+        </WishlistProvider>
+        </CartProvider>
       </ProductProvider>
     </BrowserRouter>
   </React.StrictMode>,

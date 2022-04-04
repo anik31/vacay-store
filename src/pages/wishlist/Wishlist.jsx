@@ -1,13 +1,14 @@
 import "./wishlist.css";
 import { WishlistCard } from "./WishlistCard";
-import {useProducts} from "../../context/product-context";
+import { useWishlist } from "../../context";
 
 export function Wishlist(){
-    const {state} = useProducts();
+    const {wishlistState} = useWishlist();
+
     return (
         <div className="wishlist-card-wrapper">
-            <h2>My Wishlist ({state.wishlist.length})</h2>
-            {state.wishlist.map(item=><WishlistCard key={item._id} value={item} />)}
+            <h2>My Wishlist ({wishlistState.length})</h2>
+            {wishlistState.map(item=><WishlistCard key={item._id} value={item} />)}
         </div>
     );
 }
