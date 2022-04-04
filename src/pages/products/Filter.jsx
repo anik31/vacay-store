@@ -30,6 +30,7 @@ export function Filter(){
                             <option value="20000" label="20000"></option>
                             <option value="25000" label="25000"></option>
                         </datalist>
+                        <p>Minimum to Rs. {priceRange}</p>
                     </li>
                 </ul>
                 <ul>
