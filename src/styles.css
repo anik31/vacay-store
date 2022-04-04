@@ -29,3 +29,18 @@ input[type="radio"],input[type="range"],input[type="checkbox"]{
 .product-cards-container:nth-child(n){
     justify-items: center;
 }
+
+/* empty cart wishlist */
+
+.container-error-page{
+    text-align: center;
+}
+
+.container-error-page .btn{
+    margin: 0.5rem auto;
+    width: fit-content;
+}
+
+.container-error-page img{
+    max-width: 20rem;
+}

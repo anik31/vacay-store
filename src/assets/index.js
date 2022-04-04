@@ -1,5 +1,4 @@
 import logo from "./images/logo.png";
-import illustration404 from "./svgs/404.svg";
 import hero from "./images/hero.jpg";
 import cameraFuji from "./images/camera-fuji.jpg";
 import cameraNikon from "./images/camera-nikon.jpg";
@@ -15,5 +14,16 @@ import sunglassRaybanRound from "./images/sunglass-rayban-round.jpg";
 import sunglassRaybanSquare from "./images/sunglass-rayban-square.jpg";
 import tshirtSummer from "./images/tshirt-summer.jpg";
 import tshirtVacation from "./images/tshirt-vacation.jpg";
+import illustration404 from "./svgs/404.svg";
+import emptyCart from "./svgs/empty-cart.svg";
+import emptyWishlist from "./svgs/empty-wishlist.svg";
 
-export {illustration404,logo,hero,cameraFuji,cameraNikon,mask,maskKn95,maskSurgical,sanitizer,sanitizerHandmade,sanitizerPurell,suitcaseSkybags,suitcaseAmericanTourister,sunglassRaybanRound,sunglassRaybanSquare,tshirtSummer,tshirtVacation};
+export {
+    illustration404,emptyCart,emptyWishlist,
+    logo,hero,
+    cameraFuji,cameraNikon,
+    mask,maskKn95,maskSurgical,
+    sanitizer,sanitizerHandmade,sanitizerPurell,
+    suitcaseSkybags,suitcaseAmericanTourister,
+    sunglassRaybanRound,sunglassRaybanSquare,
+    tshirtSummer,tshirtVacation};
