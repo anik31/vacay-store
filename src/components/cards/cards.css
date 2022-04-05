@@ -1,19 +1,10 @@
 /* product card */
-.card-price-content .text-sm{
-    font-size: 0.9rem;
-    font-weight: 500;
-}
 
 .card-vertical .card-price-content{
     display: flex;
     gap: 0.5rem;
     justify-content: center;
     align-items: center;
-}
-
-.rating-container{
-    display: flex;
-    gap: 0.5rem;
 }
 
 .card-vertical .rating-pill-text{    
@@ -39,4 +30,42 @@
 
 .card-vertical .red-heart{
     color: #ff4343;
+}
+
+.card.card-vertical{
+    width: 17rem;
+    height: 26rem;
+}
+
+.card.card-vertical img{
+    height: 18rem;
+}
+
+.card.card-vertical .btn{
+    height: 2rem;
+} 
+
+/* || media queries */
+
+@media only screen and (max-width:480px){
+    .card.card-vertical{
+        width: 13rem;
+        height: 20rem;
+    }
+    
+    .card.card-vertical img{
+        height: 13rem;
+    }
+
+    .card .card-title{
+        font-size: 1rem;
+    }
+    
+    .card .rating-container{
+        gap: 0.2rem;
+    }
+
+    .card-vertical .card-price-content{
+        gap: 0.2rem;
+    }
 }
