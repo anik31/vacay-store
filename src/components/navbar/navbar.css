@@ -51,6 +51,7 @@ img.logo{
 .header .ham-menu .ham-item{
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 1rem;
     padding: 1rem;
     font-size: 1.2rem;

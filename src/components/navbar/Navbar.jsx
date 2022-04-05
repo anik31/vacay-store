@@ -13,7 +13,7 @@ export function Navbar(){
         { linkTo: "/products", linkFor: "Products", icon: "fas fa-store" },
         { linkTo: "/wishlist", linkFor: "Wishlist", icon: "fas fa-heart" },
         { linkTo: "/cart", linkFor: "Cart", icon: "fas fa-shopping-cart" },
-        { linkTo: "/login", linkFor: "Login/Sign Up", icon: "fas fa-user" },
+        { linkTo: "/login", linkFor: "Sign Out", icon: "fas fa-sign-out-alt" },
     ]
     const getActiveStyle = ({ isActive }) => ({
         color: isActive ? "var(--primary-color)" : ""
