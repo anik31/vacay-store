@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useCart, useWishlist } from "../../context";
 import { logo } from "../../assets";
 import "./navbar.css";
@@ -15,6 +15,9 @@ export function Navbar(){
         { linkTo: "/cart", linkFor: "Cart", icon: "fas fa-shopping-cart" },
         { linkTo: "/login", linkFor: "Login/Sign Up", icon: "fas fa-user" },
     ]
+    const getActiveStyle = ({ isActive }) => ({
+        color: isActive ? "var(--primary-color)" : ""
+    });
 
     return (
         <header className="header">
@@ -34,17 +37,17 @@ export function Navbar(){
                 </li>
                 {hamburgerMenuData.map(item=>
                 <li key={item.linkTo}>
-                    <Link to={item.linkTo} className="ham-item">
+                    <NavLink style={getActiveStyle} to={item.linkTo} className="ham-item">
                         <i className={item.icon}></i>
                         <span>{item.linkFor}</span>
-                    </Link>
+                    </NavLink>
                 </li>)}
             </ul>
         </nav>
         <nav className="navigation nav-hide">
             <ul>
-                <li><Link to="/" className="btn btn-secondary-link">Home</Link></li>
-                <li><Link to="/products" className="btn btn-secondary-link">Products</Link></li>
+                <li><NavLink style={getActiveStyle} to="/" className="btn btn-secondary-link">Home</NavLink></li>
+                <li><NavLink style={getActiveStyle} to="/products" className="btn btn-secondary-link">Products</NavLink></li>
             </ul>
         </nav>
         <div className="search-box">
@@ -55,22 +58,22 @@ export function Navbar(){
             <ul>
                 <li className="nav-hide"><Link to="/login" className="btn btn-primary">Login</Link></li>
                 <li>
-                    <Link to="/wishlist" className="btn btn-secondary-icon-text-no-border">
+                    <NavLink style={getActiveStyle} to="/wishlist" className="btn btn-secondary-icon-text-no-border">
                         <div className="badge-wrapper">
                             <i className="btn-icon fas fa-heart"></i>
                             {wishlistState.length!==0 && <span className="badge badge-number">{wishlistState.length}</span>}
                         </div>
                         <span className="nav-hide">Wishlist</span>
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link to="/cart" className="btn btn-secondary-icon-text-no-border">
+                    <NavLink style={getActiveStyle} to="/cart" className="btn btn-secondary-icon-text-no-border">
                         <div className="badge-wrapper">
                             <i className="btn-icon fas fa-shopping-cart"></i>
                             {cartState.length!==0 && <span className="badge badge-number">{cartState.length}</span>}
                         </div>
                         <span className="nav-hide">Cart</span>
-                    </Link>
+                    </NavLink>
                 </li>
             </ul>
         </nav>
