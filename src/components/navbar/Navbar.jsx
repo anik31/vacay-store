@@ -8,7 +8,7 @@ export function Navbar(){
     const {wishlistState} = useWishlist();
 
     return (
-        <header className="header box-shadow">
+        <header className="header">
         <div className="hamburger-logo-wrapper">
             <button><i className="fas fa-bars"></i></button>
             <Link to="/"><img src={logo} alt="vacay-store-logo" className="logo" /></Link>

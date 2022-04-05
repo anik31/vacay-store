@@ -1,11 +1,14 @@
 import { useProducts } from "../../context";
 
-export function Filter(){
+export function Filter({isFilterVisible, setIsFilterVisible}){
     const {productState, productDispatch} = useProducts();
     const {sortBy, category, rating, priceRange, includeOutOfStock} = productState.filters;
     
     return (
-        <aside className="filter">
+        <aside className="filter" style={{display:isFilterVisible?"block":""}}>
+                {isFilterVisible && <button 
+                className="btn btn-primary-link btn-close" 
+                onClick={()=>setIsFilterVisible(false)}><i className="fas fa-times"></i></button>}
                 <div className="filter-header">
                     <h3>Filters</h3>
                     <button 
