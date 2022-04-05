@@ -5,7 +5,7 @@ export function Filter({isFilterVisible, setIsFilterVisible}){
     const {sortBy, category, rating, priceRange, includeOutOfStock} = productState.filters;
     
     return (
-        <aside className="filter" style={{display:isFilterVisible?"block":""}}>
+        <aside className="filter box-shadow" style={{display:isFilterVisible?"block":""}}>
                 {isFilterVisible && <button 
                 className="btn btn-primary-link btn-close" 
                 onClick={()=>setIsFilterVisible(false)}><i className="fas fa-times"></i></button>}
