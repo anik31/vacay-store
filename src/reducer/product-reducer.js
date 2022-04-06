@@ -42,10 +42,6 @@ export function productReducer(state, action){
                 priceRange: 25000,
                 includeOutOfStock: false,
             }};
-        case "SET_CART":
-            return {...state, cart: action.payload};
-        case "SET_WISHLIST":
-            return {...state, wishlist: action.payload};
         default:
             return state;
     }

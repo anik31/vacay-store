@@ -101,3 +101,52 @@
     width: 20rem;
     height: 20rem;
 }
+
+/* || media queries */
+
+@media only screen and (max-width:640px){
+    .hero-content h3{
+        font-size: 3.5rem;
+    }
+    
+    .landing{
+        margin: 0.5rem;
+    }
+
+    .hero, .hero img{
+        height: 40vh;
+    }
+
+    .categories-container{
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    }
+    
+    .category-card{
+        font-size: 1.8rem;
+    }
+    
+    .category-card .img-round-sizing{
+        width: 10rem;
+        height: 10rem;
+    }
+    
+    .category-card > span{
+        width: 10rem;
+        height: 10rem;
+    }
+}
+
+@media only screen and (max-width:480px){    
+    
+    .hero-content h3{
+        font-size: 2rem;
+    }
+
+    .hero span{
+        font-size: 1.5rem;
+    }
+
+    .hero, .hero img{
+        height: 30vh;
+    }
+}

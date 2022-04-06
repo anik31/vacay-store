@@ -17,11 +17,6 @@
     padding: 1.5rem;
 }
 
-.card-price-content .text-sm{
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
 .card-horizontal-md .card-price-content{
     display: flex;
     gap: 0.5rem;
@@ -72,4 +67,107 @@
 
 .total-amount{
     font-weight: 700;
+}
+
+/* || media queries */
+
+@media only screen and (max-width:1280px){
+    .grid-container-cart{
+        margin: 0 1rem;
+    }
+}
+
+@media only screen and (max-width:1024px){
+    .grid-container-cart{
+        margin: 0 0.5rem;
+    }
+}
+
+@media only screen and (max-width:900px){
+    .grid-container-cart{
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "cards" 
+        "price";
+    }
+}
+
+@media only screen and (max-width: 640px){
+    .card-horizontal-md{
+        width: 35rem;
+    }
+
+    .card-horizontal-md .btn{
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .card-horizontal-md{
+        width: 30rem;
+    }
+    
+    .card-horizontal-md .card-info{
+        margin: 1rem;
+    }
+
+    .card-horizontal-md .btn{
+        font-size: 0.8rem;
+    }
+    
+    .card-horizontal-md .card-btn-wrapper{
+        gap: 0.3rem;
+        flex-grow: 1;
+        padding: 0 0.5rem;
+    }    
+
+    .card-horizontal-md .card-content-vertical .card-info .card-price{
+        font-size: 1rem;
+    }
+    
+    .product-count button{
+        padding: 0.35rem 0.45rem;
+        font-size: 1rem;
+    }    
+}
+
+@media only screen and (max-width: 370px){
+    .card-horizontal-md{
+        width: 25rem;
+    }
+    
+    .card-horizontal-md img{
+        width: 9rem;
+    }
+}
+
+@media only screen and (max-width: 310px){
+    .card-horizontal-md{
+        width: 20.8rem;
+        height: 13rem;
+    }
+    
+    .card-horizontal-md img{
+        width: 6.5rem;
+    }
+    
+    .card-horizontal-md .card-info{
+        margin: 0.5rem;
+    }
+
+    .card-horizontal-md .card-content-vertical .card-info .card-price-content{
+        flex-wrap: wrap;
+    }
+
+    .product-count{
+        margin: 0 0.5rem;
+    }
+
+    .card-horizontal-md .card-content-vertical .product-count .counter{
+        padding: 0.1rem 0.5rem;
+    }
+
+    .price-card{
+        width: 70vw;
+    }
 }

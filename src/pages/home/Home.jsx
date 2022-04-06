@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 import { hero } from "../../assets";
 import "./home.css";
 import { ProductCard } from "../../components";
-import { useProducts } from "../../context/product-context";
+import { useProducts } from "../../context";
 import { CategoryCard } from "./CategoryCard";
 
 export function Home(){
-    const {state} = useProducts();
+    const {productState} = useProducts();
+    
     return (
         <main className="landing">
             <section className="hero">
@@ -23,15 +24,15 @@ export function Home(){
             <section>
                 <h3 className="page-title">DEALS OF THE DAY</h3>
                 <div className="product-cards-container">
-                    { state.products.length !== 0 && state.products.filter(item=> item.dealOfTheDay).map(item=><ProductCard key={item._id} value={item} />)}
+                    { productState.products.length !== 0 && productState.products.filter(item=> item.dealOfTheDay).map(item=><ProductCard key={item._id} value={item} />)}
                 </div>        
             </section>
 
             <section className="categories">
                 <h3 className="page-title">CATEGORIES TO BAG</h3>
                 <div className="categories-container">
-                    { state.categories.length !== 0 
-                    && state.categories.map(item=><CategoryCard key={item._id} value={item} />)}
+                    { productState.categories.length !== 0 
+                    && productState.categories.map(item=><CategoryCard key={item._id} value={item} />)}
                 </div>
             </section>
         </main>

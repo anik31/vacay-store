@@ -1,0 +1,73 @@
+img.logo{
+    width: 10rem;
+    object-fit: contain;
+}
+
+.hamburger-logo-wrapper{
+    align-items: center;
+}
+
+.header{
+    border-bottom: 1px solid var(--lynx-gray-color);
+}
+
+.search-box:focus-within{
+    border-color: var(--primary-color);
+}
+
+.header .ham-menu{
+    overflow: hidden;
+    background-color: white;
+    height: 100vh;
+    width: 40vw;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+}
+
+.header .navigation li{
+    margin: 0;
+}
+
+.header .ham-menu ul li .fa-times{
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    color: white;
+}
+
+.header .ham-menu ul li:first-child{
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 0;
+}
+
+.header .ham-menu ul li:first-child .ham-item{
+    color: white;
+}
+
+.header .ham-menu .ham-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+/* || media queries */
+
+@media only screen and (max-width:810px){
+    .search-box{
+        order: 2;
+    }
+}
+
+@media only screen and (max-width:480px){
+    .header .ham-menu{
+        width: 50vw;
+    }
+}

@@ -1,10 +1,10 @@
 import "./wishlist.css";
-import { removeFromWishlist, addToCart, updateItemQuantity } from "../../utils";
-import { useProducts } from "../../context/product-context";
+import { useCart, useWishlist } from "../../context";
 
 export function WishlistCard({value}){
     const {_id, image, title, rating, price, originalPrice, discount} = value;
-    const {state, dispatch} = useProducts();
+    const {cartState, addToCart, updateItemQuantity} = useCart();
+    const {removeFromWishlist} = useWishlist();
 
     return (
         <div className="card card-horizontal card-horizontal-lg">
@@ -28,12 +28,12 @@ export function WishlistCard({value}){
                 <button 
                 className="btn btn-primary" 
                 onClick={()=>{
-                    state.cart.find(item=>item._id===_id)
-                    ? updateItemQuantity(_id, dispatch, "increment")
-                    : addToCart(value,dispatch)
+                    cartState.find(item=>item._id===_id)
+                    ? updateItemQuantity(_id, "increment")
+                    : addToCart(value)
                     }}
                 >ADD TO CART</button>
-                <button className="btn btn-primary-outline" onClick={()=>removeFromWishlist(_id, dispatch)}>REMOVE</button>
+                <button className="btn btn-primary-outline" onClick={()=>removeFromWishlist(_id)}>REMOVE</button>
             </div>
         </div>
     );
