@@ -1,13 +1,13 @@
 import {createContext, useContext, useReducer} from "react";
 import { wishlistReducer } from "../reducer";
 import axios from "axios";
+import { useAuth } from "./auth-context";
 
 const WishlistContext = createContext(null);
 
-const encodedToken = localStorage.getItem("encodedToken");
-
 const WishlistProvider = ({children}) => {
     const [wishlistState, wishlistDispatch] = useReducer(wishlistReducer, []);
+    const {token: encodedToken} = useAuth();
 
     const getWishlistData = async() => {
         try{
@@ -25,6 +25,7 @@ const WishlistProvider = ({children}) => {
     }
   
     const addToWishlist = async(postData) => {
+        console.log(encodedToken);
         try{
             const {status, data} = await axios({
                 method: "post",

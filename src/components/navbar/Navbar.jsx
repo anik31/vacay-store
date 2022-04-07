@@ -1,24 +1,34 @@
-import { Link, NavLink } from "react-router-dom";
-import { useCart, useWishlist } from "../../context";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useAuth, useCart, useWishlist } from "../../context";
 import { logo } from "../../assets";
 import "./navbar.css";
 import {useState} from "react";
 
-export function Navbar(){
-    const {cartState} = useCart();
-    const {wishlistState} = useWishlist();
-    const [isHamburgerMenuVisible, setIsHamburgerMenuVisible] = useState(false);
-    const hamburgerMenuData = [
-        { linkTo: "/", linkFor: "Home", icon: "fas fa-home" },
-        { linkTo: "/products", linkFor: "Products", icon: "fas fa-store" },
-        { linkTo: "/wishlist", linkFor: "Wishlist", icon: "fas fa-heart" },
-        { linkTo: "/cart", linkFor: "Cart", icon: "fas fa-shopping-cart" },
-        { linkTo: "/login", linkFor: "Sign Out", icon: "fas fa-sign-out-alt" },
-    ]
-    const getActiveStyle = ({ isActive }) => ({
-        color: isActive ? "var(--primary-color)" : ""
-    });
+const hamburgerMenuData = [
+    { linkTo: "/", linkFor: "Home", icon: "fas fa-home" },
+    { linkTo: "/products", linkFor: "Products", icon: "fas fa-store" },
+    { linkTo: "/wishlist", linkFor: "Wishlist", icon: "fas fa-heart" },
+    { linkTo: "/cart", linkFor: "Cart", icon: "fas fa-shopping-cart" }
+];
 
+const getActiveStyle = ({ isActive }) => ({
+    color: isActive ? "var(--primary-color)" : ""
+});
+
+export function Navbar(){
+    const {cartState, cartDispatch} = useCart();
+    const {wishlistState, wishlistDispatch} = useWishlist();
+    const {isLoggedIn, setIsLoggedIn, setToken, setUser, logoutUser, user} = useAuth();
+    const [isHamburgerMenuVisible, setIsHamburgerMenuVisible] = useState(false);
+    const navigate = useNavigate();
+    
+    const logoutHandler = () => {
+        logoutUser();
+        cartDispatch({type:"SET_CART", payload: []});
+        wishlistDispatch({type:"SET_WISHLIST", payload: []});
+        navigate("/");
+    };
+    
     return (
         <header className="header">
         <div className="hamburger-logo-wrapper">
@@ -28,9 +38,13 @@ export function Navbar(){
         <nav className="ham-menu box-shadow" style={{display:isHamburgerMenuVisible?"block":"none"}}>
             <ul>
                 <li>
-                    <Link to="/login" className="ham-item">
+                    {isLoggedIn
+                    ? <Link to="/" className="ham-item">
                         <i className="fas fa-user"></i>
-                    Login/ Sign Up</Link>
+                    Hello, {user.firstName}</Link> 
+                    : <Link to="/login" className="ham-item">
+                        <i className="fas fa-user"></i>
+                    Login/ Sign Up</Link>}
                     <button onClick={()=>setIsHamburgerMenuVisible(false)}>
                         <i className="fas fa-times"></i>
                     </button>
@@ -42,6 +56,12 @@ export function Navbar(){
                         <span>{item.linkFor}</span>
                     </NavLink>
                 </li>)}
+                {isLoggedIn && <li>
+                    <Link to="/" className="ham-item" onClick={logoutHandler}>
+                        <i className="fas fa-sign-out-alt"></i>
+                        <span>Sign Out</span>
+                    </Link>
+                </li>}
             </ul>
         </nav>
         <nav className="navigation nav-hide">
@@ -56,7 +76,10 @@ export function Navbar(){
         </div>
         <nav className="navigation">
             <ul>
-                <li className="nav-hide"><Link to="/login" className="btn btn-primary">Login</Link></li>
+                <li className="nav-hide">{
+                    !isLoggedIn
+                    ? <Link to="/login" className="btn btn-primary">Login</Link>
+                    : <Link to="/" className="btn btn-primary" onClick={logoutHandler}>Logout</Link>}</li>
                 <li>
                     <NavLink style={getActiveStyle} to="/wishlist" className="btn btn-secondary-icon-text-no-border">
                         <div className="badge-wrapper">
