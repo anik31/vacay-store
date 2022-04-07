@@ -10,7 +10,7 @@
 Vacay store is an ecommerce web application for buying vacation essentials. Vacay store is publicly hosted on Netlify at https://vacay-store-react.netlify.app/.
 
 ## Demo
-![vacay store demo](https://user-images.githubusercontent.com/56336326/162265324-d1fbbc6c-e4bd-445d-a29b-4cdacc798fae.mp4)
+https://user-images.githubusercontent.com/56336326/162265324-d1fbbc6c-e4bd-445d-a29b-4cdacc798fae.mp4
 
 ## Features
 - Home page 
