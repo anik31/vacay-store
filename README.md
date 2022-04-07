@@ -10,7 +10,7 @@
 Vacay store is an ecommerce web application for buying vacation essentials. Vacay store is publicly hosted on Netlify at https://vacay-store-react.netlify.app/.
 
 ## Demo
-![image](https://user-images.githubusercontent.com/56336326/154792320-b1d39258-9e04-4f3f-b624-53c65d66eb05.png)
+https://user-images.githubusercontent.com/56336326/162265324-d1fbbc6c-e4bd-445d-a29b-4cdacc798fae.mp4
 
 ## Features
 - Home page 
@@ -26,6 +26,10 @@ Vacay store is an ecommerce web application for buying vacation essentials. Vaca
     - Featured
 - Wishlist management
 - Cart management
+- Authentication
+    - Sign up
+    - Login
+    - Logout
 
 ## Tech stack
 - ReactJS
@@ -39,6 +43,10 @@ Vacay store is an ecommerce web application for buying vacation essentials. Vaca
 ```bash
 git clone https://github.com/anik31/vacay-store.git
 cd vacay-store
+```
+- Switch to `dev` branch.
+```bash
+git checkout dev
 ```
 - Create an environment variable inside `.env` file in the root of the project.
 ```

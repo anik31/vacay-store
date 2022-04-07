@@ -1,13 +1,13 @@
 import {createContext, useContext, useReducer} from "react";
 import { cartReducer } from "../reducer";
 import axios from "axios";
+import { useAuth } from "./auth-context";
 
 const CartContext = createContext(null);
 
-const encodedToken = localStorage.getItem("encodedToken");
-
 const CartProvider = ({children}) => {
     const [cartState, cartDispatch] = useReducer(cartReducer, []);
+    const {token: encodedToken} = useAuth();
 
     const getCartData = async() => {
         try{
