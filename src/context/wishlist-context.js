@@ -25,7 +25,6 @@ const WishlistProvider = ({children}) => {
     }
   
     const addToWishlist = async(postData) => {
-        console.log(encodedToken);
         try{
             const {status, data} = await axios({
                 method: "post",
