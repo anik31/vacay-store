@@ -71,7 +71,7 @@
     .filter{
         display: none;
         position: fixed;
-        z-index: var(--z-index-2);
+        z-index: 3;
         background: white;
         overflow-y: scroll;
         height: 90vh;
