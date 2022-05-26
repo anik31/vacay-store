@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://vacay-store-react.netlify.app/">
-    <img src="src/assets/images/logo.png" alt="Vacay Store logo">
+    <img src="https://res.cloudinary.com/anik-vacay/image/upload/v1653536487/vacay-store/images/logo_ho278w.png" alt="Vacay Store logo">
   </a>
 </p>
 <h4 align="center"><i>Buy vacation essentials</i></h4>
