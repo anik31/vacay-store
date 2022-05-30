@@ -5,6 +5,7 @@ import {Home, Products, Cart, Wishlist, Login, Signup, Page404, Checkout, OrderS
 import Mockman from "mockman-js";
 import { useEffect } from "react";
 import { useProducts, useCart, useWishlist, useAuth, useAddress } from "./context";
+import {useScrollToTop} from "./hooks/useScrollToTop";
 
 function App() {
   const {getProducts, getCategories} = useProducts();
@@ -12,6 +13,8 @@ function App() {
   const {getWishlistData} = useWishlist();
   const {getAddressData, addressState} = useAddress();
   const {token} = useAuth();
+
+  useScrollToTop();
   
   useEffect(()=>{
     getProducts();
