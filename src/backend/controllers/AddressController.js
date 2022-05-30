@@ -49,7 +49,7 @@ export const addNewAddressHandler = function (schema, request) {
     const { address } = JSON.parse(request.requestBody);
 
     userAddresses.push({
-      address,
+      ...address,
       createdAt: formatDate(),
       updatedAt: formatDate(),
       _id: uuid(),

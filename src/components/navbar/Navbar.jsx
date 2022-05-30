@@ -18,7 +18,7 @@ const getActiveStyle = ({ isActive }) => ({
 export function Navbar(){
     const {cartState, cartDispatch} = useCart();
     const {wishlistState, wishlistDispatch} = useWishlist();
-    const {isLoggedIn, setIsLoggedIn, setToken, setUser, logoutUser, user} = useAuth();
+    const {isLoggedIn, logoutUser, user} = useAuth();
     const [isHamburgerMenuVisible, setIsHamburgerMenuVisible] = useState(false);
     const navigate = useNavigate();
     
@@ -77,9 +77,11 @@ export function Navbar(){
         <nav className="navigation">
             <ul>
                 <li className="nav-hide">{
-                    !isLoggedIn
-                    ? <Link to="/login" className="btn btn-primary">Login</Link>
-                    : <Link to="/" className="btn btn-primary" onClick={logoutHandler}>Logout</Link>}</li>
+                    isLoggedIn
+                    ? <Link to="/" className="btn btn-primary" onClick={logoutHandler}>Logout</Link>   
+                    : <Link to="/login" className="btn btn-primary">Login</Link>
+                    }
+                </li>
                 <li>
                     <NavLink style={getActiveStyle} to="/wishlist" className="btn btn-secondary-icon-text-no-border">
                         <div className="badge-wrapper">

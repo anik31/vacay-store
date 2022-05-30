@@ -1,0 +1,44 @@
+.btn-order{
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.summary-container{
+    justify-content: space-between;
+    padding: 2rem;
+    margin: 0 auto;
+    width: 65%;
+    height: 50vh;
+}
+
+.summary-left{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.summary-left h3{
+    color: var(--green-color-400);
+}
+
+.summary-right img{
+    max-width: 5rem;
+}
+
+.summary-product-content{
+    padding: 0.5rem;
+}
+
+.summary-product-content, .summary-product-content div{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.summary-right{
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
