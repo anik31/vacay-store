@@ -1,5 +1,5 @@
 import { Navigate, useLocation, Outlet } from "react-router-dom";
-import { useAuth } from "../context";
+import { useAuth } from "../../context";
 
 export function RequireAuth() {
     const {isLoggedIn} = useAuth();

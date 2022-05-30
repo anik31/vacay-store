@@ -1,4 +1,4 @@
-import { Navbar, RequireAuth } from "./components";
+import { Navbar, RequireAuth, RestrictAuth } from "./components";
 import "./styles.css";
 import { Routes, Route } from "react-router-dom";
 import {Home, Products, Cart, Wishlist, Login, Signup, Page404, Checkout, OrderSummary} from "./pages";
@@ -46,8 +46,10 @@ function App() {
             <Route path="/checkout" element={<Checkout/>}/>
             <Route path="/order_summary" element={<OrderSummary/>}/>
           </Route>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route element={<RestrictAuth/>}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+          </Route>
           <Route path="*" element={<Page404/>} />
           <Route path="/mockman" element={<Mockman />} />
         </Routes>
