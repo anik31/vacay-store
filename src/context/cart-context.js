@@ -1,4 +1,4 @@
-import {createContext, useContext, useReducer} from "react";
+import {createContext, useContext, useReducer, useState} from "react";
 import { cartReducer } from "../reducer";
 import axios from "axios";
 import { useAuth } from "./auth-context";
@@ -8,6 +8,17 @@ const CartContext = createContext(null);
 const CartProvider = ({children}) => {
     const [cartState, cartDispatch] = useReducer(cartReducer, []);
     const {token: encodedToken} = useAuth();
+    const [checkoutDetails, setCheckoutDetails] = useState({
+        cartDetails: {},
+        address: {
+            name: "", 
+            state: "",
+            city: "", 
+            street: "", 
+            pincode: ""
+        }
+    });
+    const [order, setOrder] = useState({});
 
     const getCartData = async() => {
         try{
@@ -54,6 +65,21 @@ const CartProvider = ({children}) => {
             console.error(err);
         }
     }
+
+    const clearCart = async(cart) => {
+        try {
+          for (const item of cart) {
+            await axios({
+              method: "delete",
+              url: `api/user/cart/${item._id}`,
+              headers: {authorization: encodedToken}
+            });
+          }
+          cartDispatch({type: "SET_CART", payload: []});
+        } catch (error) {
+          console.error("Error in clear cart service", error);
+        }
+    }
       
     const updateItemQuantity = async(id, updateType) => {
         try{
@@ -70,12 +96,13 @@ const CartProvider = ({children}) => {
             console.error(err);
         }
     }
-      
 
     return (
         <CartContext.Provider value={{
             cartState, cartDispatch,
-            getCartData, addToCart, removeFromCart, updateItemQuantity
+            getCartData, addToCart, removeFromCart, clearCart, updateItemQuantity,
+            checkoutDetails, setCheckoutDetails,
+            order, setOrder
         }}>
             {children}
         </CartContext.Provider>

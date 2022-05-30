@@ -1,0 +1,21 @@
+output.modal{
+    width: 25rem;
+    height: 28rem;
+}
+
+.modal-wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px);
+}
+
+.modal-wrapper .modal{
+    border: 1px solid var(--lynx-gray-color);
+}
