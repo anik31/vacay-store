@@ -1,6 +1,6 @@
 import { useAuth, useCart, useWishlist } from "../../context";
 import { discountCalc } from "../../utils";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./cards.css";
 import { useThrottle } from "../../hooks";
 
@@ -12,18 +12,19 @@ export function ProductCard({ value }) {
   const navigate = useNavigate();
   const valueWithDiscount = {...value, discount:discount};
   const {isLoggedIn} = useAuth();
+  const location = useLocation();
 
   const addProductToWishlist = () => {
     isLoggedIn
     ? addToWishlist(valueWithDiscount)
-    : navigate("/login")
+    : navigate("/login", {replace: true, state: {from: location}})
   };
   const addToWishlistHandler = useThrottle(addProductToWishlist,400);
 
   const addProductToCart = () => {
     isLoggedIn
     ? addToCart(valueWithDiscount)
-    : navigate("/login")
+    : navigate("/login", {replace: true, state: {from: location}})
   };
   const addToCartHandler = useThrottle(addProductToCart,400);
   

@@ -46,6 +46,7 @@ export function productReducer(state, action){
                 rating: null,
                 priceRange: 25000,
                 includeOutOfStock: false,
+                searchTerm: ""
             }};
         default:
             return state;
