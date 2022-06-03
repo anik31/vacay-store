@@ -42,3 +42,29 @@
     gap: 0.5rem;
     padding: 0.5rem;
 }
+
+@media only screen and (max-width: 1000px) {
+    .summary-container{
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    .summary-container{
+        height: 45vh;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .summary-container{
+        height: 35vh;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .summary-container{
+        flex-direction: column;
+        height: max-content;
+        gap: 1rem;
+    }
+}
