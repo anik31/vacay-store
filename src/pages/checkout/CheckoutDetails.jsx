@@ -2,6 +2,7 @@ import { useAuth, useCart } from "../../context";
 import {loadScript, popper} from "../../utils";
 import { v4 as uuid } from "uuid";
 import { useNavigate } from "react-router-dom";
+import { useThrottle } from "../../hooks";
 
 export function CheckoutDetails(){
     const {cartState, setOrder, clearCart,checkoutDetails:{address, 
@@ -50,7 +51,8 @@ export function CheckoutDetails(){
         const paymentObject = new window.Razorpay(options);
         paymentObject.open();
     };
-    
+    const paymentHandler = useThrottle(makePayment,400);
+
     return (
         <aside className="checkout-card box-shadow">
             <h4>ORDER DETAILS</h4>
@@ -97,7 +99,7 @@ export function CheckoutDetails(){
                 <p>{address.state} - {address.pincode}</p>
             </div>
             </>}
-            <button className="btn btn-primary" onClick={makePayment}>PLACE ORDER</button>
+            <button className="btn btn-primary" onClick={()=>paymentHandler()}>PLACE ORDER</button>
         </aside>
     );
 }
