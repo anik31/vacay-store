@@ -1,6 +1,7 @@
 import "./wishlist.css";
 import { useCart, useWishlist } from "../../context";
 import { useThrottle } from "../../hooks";
+import { toast } from "react-toastify";
 
 export function WishlistCard({value}){
     const {_id, image, title, rating, price, originalPrice, discount} = value;
@@ -8,9 +9,12 @@ export function WishlistCard({value}){
     const {removeFromWishlist} = useWishlist();
 
     const addToCartFromWishlist = () => {
-        cartState.find(item=>item._id===_id)
-        ? updateItemQuantity(_id, "increment")
-        : addToCart(value)
+        if(cartState.find(item=>item._id===_id)){
+            toast.info("Item quantity updated");
+            updateItemQuantity(_id, "increment");
+        }else{
+            addToCart(value);
+        }
     };
     const addToCartHandler = useThrottle(addToCartFromWishlist,400);
 

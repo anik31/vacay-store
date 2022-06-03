@@ -2,6 +2,7 @@ import {createContext, useContext, useReducer} from "react";
 import { wishlistReducer } from "../reducer";
 import axios from "axios";
 import { useAuth } from "./auth-context";
+import { toast } from "react-toastify";
 
 const WishlistContext = createContext(null);
 
@@ -32,6 +33,7 @@ const WishlistProvider = ({children}) => {
                 data: {product: postData},
                 headers: {authorization: encodedToken}
             });
+            toast.success("Added to wishlist");
             if(status===201){
                 wishlistDispatch({type:"SET_WISHLIST", payload: data.wishlist})
             }
@@ -47,6 +49,7 @@ const WishlistProvider = ({children}) => {
                 url: `/api/user/wishlist/${id}`,
                 headers: {authorization: encodedToken}
             });
+            toast.info("Removed from wishlist");
             if(status===200){
                 wishlistDispatch({type:"SET_WISHLIST", payload: data.wishlist})
             }

@@ -18,11 +18,14 @@ export function Products(){
             <Filter setIsFilterVisible={setIsFilterVisible} isFilterVisible={isFilterVisible} />
             <main>
                 <h2 className="page-title">Showing {searchedData.length} Products</h2>
-                <button className="btn btn-primary-outline" onClick={()=>setIsFilterVisible(prev=>!prev)}>
+                <button className="btn btn-primary-outline btn-filter" onClick={()=>setIsFilterVisible(prev=>!prev)}>
                 <i className="btn-icon btn-primary-icon fas fa-filter"></i>Sort | Filter</button>
-                <div className="product-cards-container">
-                { searchedData.length !== 0 && searchedData.map(item=><ProductCard key={item._id} value={item} />)}
-                </div>
+                { searchedData.length > 0
+                ?   <div className="product-cards-container">
+                        {searchedData.map(item=><ProductCard key={item._id} value={item} />)}
+                    </div>
+                : <p className="empty-state">No Products Found</p>
+                }
             </main>
         </div>
     );

@@ -6,6 +6,8 @@ import Mockman from "mockman-js";
 import { useEffect } from "react";
 import { useProducts, useCart, useWishlist, useAuth, useAddress } from "./context";
 import {useScrollToTop} from "./hooks/useScrollToTop";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const {getProducts, getCategories} = useProducts();
@@ -37,6 +39,7 @@ function App() {
   return (
     <div className="App">
         <Navbar/>
+        <ToastContainer theme="light" autoClose={1000} position="bottom-right"/>
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/products" element={<Products/>}/>

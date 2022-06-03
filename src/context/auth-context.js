@@ -1,6 +1,7 @@
 import {createContext, useContext, useState} from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AuthContext = createContext(null);
 
@@ -18,6 +19,7 @@ const AuthProvider = ({children}) => {
                     data: credentials,
                     url: "/api/auth/login"
                 });
+                toast.success("Login successful");
                 if (status === 200) {
                 setIsLoggedIn(true);
                 setToken(encodedToken);
@@ -37,6 +39,7 @@ const AuthProvider = ({children}) => {
                 data: credentials,
                 url: "/api/auth/signup"
             });
+            toast.success("Signup successful");
             if (status === 201) {
                 setIsLoggedIn(true);
                 setToken(encodedToken);
@@ -49,6 +52,7 @@ const AuthProvider = ({children}) => {
         }
     };
     const logoutUser = () => {
+        toast.info("Logout successful");
         setIsLoggedIn(false);
         setToken("");
         setUser({});

@@ -3,6 +3,7 @@ import {loadScript, popper} from "../../utils";
 import { v4 as uuid } from "uuid";
 import { useNavigate } from "react-router-dom";
 import { useThrottle } from "../../hooks";
+import { toast } from "react-toastify";
 
 export function CheckoutDetails(){
     const {cartState, setOrder, clearCart,checkoutDetails:{address, 
@@ -99,7 +100,13 @@ export function CheckoutDetails(){
                 <p>{address.state} - {address.pincode}</p>
             </div>
             </>}
-            <button className="btn btn-primary" onClick={()=>paymentHandler()}>PLACE ORDER</button>
+            <button className="btn btn-primary"  
+            onClick={()=>{
+                if(!address.name){
+                    toast.warning("Add delivery address");
+                }else{
+                    paymentHandler()
+                }}}>PLACE ORDER</button>
         </aside>
     );
 }

@@ -32,7 +32,19 @@
     cursor: pointer;
 }
 
+.btn-filter{
+    margin-top: 1rem;
+}
+
 /* products listing */
+
+.empty-state{
+    margin: 4rem 0;
+    font-size: 2rem;
+    font-weight: 300;
+    text-align: center;
+}
+
 .product-page-container{
     display: grid;
     grid-template-columns: 16rem 1fr;

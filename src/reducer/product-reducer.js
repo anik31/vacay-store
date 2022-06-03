@@ -41,12 +41,12 @@ export function productReducer(state, action){
             }};
         case "CLEAR_ALL_FILTERS":
             return {...state, filters: {
+                ...state.filters,
                 sortBy: "FEATURED",
                 category: [],
                 rating: null,
                 priceRange: 25000,
-                includeOutOfStock: false,
-                searchTerm: ""
+                includeOutOfStock: false
             }};
         default:
             return state;
