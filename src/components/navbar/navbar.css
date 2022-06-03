@@ -15,6 +15,10 @@ img.logo{
     border-color: var(--primary-color);
 }
 
+.header .search-box{
+    border-width: 1px;
+}
+
 .header .ham-menu{
     overflow: hidden;
     background-color: white;
