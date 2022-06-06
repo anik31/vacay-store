@@ -1,4 +1,4 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useAuth, useCart, useProducts, useWishlist } from "../../context";
 import { logo } from "../../assets";
 import "./navbar.css";
@@ -17,14 +17,16 @@ const getActiveStyle = ({ isActive }) => ({
 });
 
 export function Navbar(){
+    const navigate = useNavigate();
+    const {pathname} = useLocation();
     const {cartState, cartDispatch} = useCart();
     const {wishlistState, wishlistDispatch} = useWishlist();
     const {productDispatch} = useProducts();
     const {isLoggedIn, logoutUser, user} = useAuth();
     const [isHamburgerMenuVisible, setIsHamburgerMenuVisible] = useState(false);
-    const navigate = useNavigate();
     const [searchVal, setSearchVal] = useState("");
-	const debouncedSearchVal = useDebounce(searchVal, 500);
+	
+    const debouncedSearchVal = useDebounce(searchVal, 300);
 
 	useEffect(() => {
 		productDispatch({type: "SET_SEARCH_TERM", payload: debouncedSearchVal});
@@ -80,7 +82,11 @@ export function Navbar(){
         </nav>
         <div className="search-box">
             <i className="fas fa-search"></i>
-            <input type="text" placeholder="Search" onChange={({target})=>setSearchVal(target.value)} />
+            <input type="text" placeholder="Search" 
+            onChange={({target})=>{
+                pathname!=="/products" && navigate("/products")
+                setSearchVal(target.value)
+            }} />
         </div>
         <nav className="navigation">
             <ul>
