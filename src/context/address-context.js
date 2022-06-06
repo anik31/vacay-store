@@ -21,8 +21,8 @@ const AddressProvider = ({children}) => {
             if(status===200){
                 addressDispatch({type:"SET_ADDRESS", payload: data.address})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
   
@@ -38,8 +38,8 @@ const AddressProvider = ({children}) => {
             if(status===201){
                 addressDispatch({type:"SET_ADDRESS", payload: data.address})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
   
@@ -53,8 +53,8 @@ const AddressProvider = ({children}) => {
             if(status===200){
                 addressDispatch({type:"SET_ADDRESS", payload: data.address})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
 

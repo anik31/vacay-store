@@ -29,8 +29,8 @@ const ProductProvider = ({children}) => {
             if(status===200){
                 productDispatch({type:"SET_PRODUCTS", payload: data.products})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
 
@@ -43,8 +43,8 @@ const ProductProvider = ({children}) => {
             if(status===200){
                 productDispatch({type:"SET_CATEGORIES", payload: data.categories})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
 

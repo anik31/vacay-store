@@ -20,8 +20,8 @@ const WishlistProvider = ({children}) => {
             if(status===200){
                 wishlistDispatch({type:"SET_WISHLIST", payload: data.wishlist})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
   
@@ -37,8 +37,8 @@ const WishlistProvider = ({children}) => {
             if(status===201){
                 wishlistDispatch({type:"SET_WISHLIST", payload: data.wishlist})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
   
@@ -53,8 +53,8 @@ const WishlistProvider = ({children}) => {
             if(status===200){
                 wishlistDispatch({type:"SET_WISHLIST", payload: data.wishlist})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
 
