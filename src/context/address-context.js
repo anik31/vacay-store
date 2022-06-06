@@ -2,6 +2,7 @@ import {createContext, useContext, useReducer, useState} from "react";
 import { addressReducer } from "../reducer";
 import axios from "axios";
 import { useAuth } from "./auth-context";
+import { toast } from "react-toastify";
 
 const AddressContext = createContext(null);
 
@@ -33,6 +34,7 @@ const AddressProvider = ({children}) => {
                 data: {address: addressData},
                 headers: {authorization: encodedToken}
             });
+            toast.success("Address created");
             if(status===201){
                 addressDispatch({type:"SET_ADDRESS", payload: data.address})
             }

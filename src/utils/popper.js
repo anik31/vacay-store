@@ -1,9 +1,9 @@
 import confetti from "canvas-confetti";
 
 export function popper(){
-    var end = Date.now() + (2 * 1000);
+    var end = Date.now() + (1 * 1000);
 
-    var colors = ['#00adef', '#ffffff'];
+    var colors = ['#bb0000',"#FDE68A"];
 
     (function frame() {
     confetti({

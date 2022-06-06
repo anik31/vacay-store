@@ -1,7 +1,8 @@
 import { useAuth, useCart, useWishlist } from "../../context";
 import { discountCalc } from "../../utils";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./cards.css";
+import { useThrottle } from "../../hooks";
 
 export function ProductCard({ value }) {
   const {_id ,outOfStock, badge, image, title, price, originalPrice, rating} = value;
@@ -11,15 +12,31 @@ export function ProductCard({ value }) {
   const navigate = useNavigate();
   const valueWithDiscount = {...value, discount:discount};
   const {isLoggedIn} = useAuth();
+  const location = useLocation();
+
+  const addProductToWishlist = () => {
+    isLoggedIn
+    ? addToWishlist(valueWithDiscount)
+    : navigate("/login", {replace: true, state: {from: location}})
+  };
+  const addToWishlistHandler = useThrottle(addProductToWishlist,400);
+
+  const addProductToCart = () => {
+    isLoggedIn
+    ? addToCart(valueWithDiscount)
+    : navigate("/login", {replace: true, state: {from: location}})
+  };
+  const addToCartHandler = useThrottle(addProductToCart,400);
   
     return (
       <div className="card card-vertical">
         {outOfStock && <span className="card-overlay">OUT OF STOCK</span>}
         {badge && <span className="card-badge">{badge}</span>}
+        
         {wishlistState.find(item=>item._id===_id)
         ? <i className="red-heart fas fa-heart" onClick={()=>removeFromWishlist(_id)}></i>
-        : <i className="far fa-heart" 
-        onClick={()=>{isLoggedIn?addToWishlist(valueWithDiscount):navigate("/login")}}></i>}
+        : <i className="far fa-heart" onClick={()=>addToWishlistHandler()}></i>}
+        
         <img src={image.src} className="img-responsive" alt={image.alt} />
         <h5 className="card-title">{title}</h5>
         <div className="rating-container">
@@ -34,10 +51,10 @@ export function ProductCard({ value }) {
           <del className="text-gray">Rs. {originalPrice}</del>
           <span className="text-primary text-sm">{discount}% off</span>
         </div>
+        
         {cartState.find(item=> item._id===_id)
         ?<button className="btn btn-primary" onClick={()=>navigate("/cart")}>Go to cart</button>
-        :<button className="btn btn-primary" 
-        onClick={()=>{isLoggedIn?addToCart(valueWithDiscount):navigate("/login")}}>Add to cart</button>}
+        :<button className="btn btn-primary" onClick={()=>addToCartHandler()}>Add to cart</button>}
       </div>
     );
 };

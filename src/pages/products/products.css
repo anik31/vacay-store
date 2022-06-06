@@ -32,7 +32,19 @@
     cursor: pointer;
 }
 
+.btn-filter{
+    margin-top: 1rem;
+}
+
 /* products listing */
+
+.empty-state{
+    margin: 4rem 0;
+    font-size: 2rem;
+    font-weight: 300;
+    text-align: center;
+}
+
 .product-page-container{
     display: grid;
     grid-template-columns: 16rem 1fr;
@@ -71,7 +83,7 @@
     .filter{
         display: none;
         position: fixed;
-        z-index: 3;
+        z-index: 2;
         background: white;
         overflow-y: scroll;
         height: 90vh;

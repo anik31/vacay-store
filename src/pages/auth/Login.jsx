@@ -19,16 +19,22 @@ export function Login(){
     const [errMsg, setErrMsg] = useState("");
 
     const passwordVisibilityHandler = (e) => setIsPasswordVisible(prev=> !prev);
+
     const loginHandler = () => {
         if(!credentials.email || !credentials.password){
             setErrMsg("Enter credentials");
         }else{
             loginUser(credentials);
         }
-    }
+    };
+
+    const testLoginHandler = () => {
+        setCredentials(testCredentials);
+        loginUser(testCredentials);
+    };
 
     return (
-        <div className="grid-container-auth">
+        <div className="container-auth">
             <div className="form box-shadow">
             <h3>Login</h3>
             {errMsg && <p className="err-msg">{errMsg}</p>}
@@ -49,14 +55,8 @@ export function Login(){
                     </button>
                 </div>
             </div>
-            <div className="input-link-grp">
-                <div className="input input-checkbox-radio">
-                    <label><input type="checkbox" />Remember me</label>
-                </div>
-                <button className="btn btn-primary-link">Forgot your Password?</button>
-            </div>
             <button className="btn btn-primary" onClick={loginHandler} >Login</button>
-            <button className="btn btn-primary-outline" onClick={()=>setCredentials(testCredentials)}>Use Guest Credentials</button>
+            <button className="btn btn-primary-outline" onClick={testLoginHandler}>Test Login</button>
             <Link to="/signup" className="btn btn-secondary-icon-text-no-border">Create New Account <i className="fas fa-chevron-right"></i></Link>
             </div>
         </div>

@@ -1,5 +1,9 @@
 /* product card */
 
+.card-vertical .card-overlay{
+    z-index: 1;
+}
+
 .card-vertical .card-price-content{
     display: flex;
     gap: 0.5rem;

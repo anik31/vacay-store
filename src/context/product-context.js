@@ -12,7 +12,8 @@ const initialState = {
         category: [],
         rating: null,
         priceRange: 25000,
-        includeOutOfStock: false
+        includeOutOfStock: false,
+        searchTerm: ""
     }
 };
 

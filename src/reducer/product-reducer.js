@@ -4,6 +4,11 @@ export function productReducer(state, action){
             return {...state, products: action.payload};
         case "SET_CATEGORIES":
             return {...state, categories: action.payload};
+        case "SET_SEARCH_TERM":
+            return {...state, filters: {
+                ...state.filters, 
+                searchTerm: action.payload
+            }};
         case "SORT_PRODUCTS":
             return {...state, filters: {
                 ...state.filters,
@@ -36,11 +41,12 @@ export function productReducer(state, action){
             }};
         case "CLEAR_ALL_FILTERS":
             return {...state, filters: {
+                ...state.filters,
                 sortBy: "FEATURED",
                 category: [],
                 rating: null,
                 priceRange: 25000,
-                includeOutOfStock: false,
+                includeOutOfStock: false
             }};
         default:
             return state;

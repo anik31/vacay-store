@@ -1,8 +1,9 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useAuth, useCart, useWishlist } from "../../context";
+import { useAuth, useCart, useProducts, useWishlist } from "../../context";
 import { logo } from "../../assets";
 import "./navbar.css";
-import {useState} from "react";
+import {useState, useEffect} from "react";
+import { useDebounce } from "../../hooks";
 
 const hamburgerMenuData = [
     { linkTo: "/", linkFor: "Home", icon: "fas fa-home" },
@@ -18,9 +19,16 @@ const getActiveStyle = ({ isActive }) => ({
 export function Navbar(){
     const {cartState, cartDispatch} = useCart();
     const {wishlistState, wishlistDispatch} = useWishlist();
+    const {productDispatch} = useProducts();
     const {isLoggedIn, logoutUser, user} = useAuth();
     const [isHamburgerMenuVisible, setIsHamburgerMenuVisible] = useState(false);
     const navigate = useNavigate();
+    const [searchVal, setSearchVal] = useState("");
+	const debouncedSearchVal = useDebounce(searchVal, 500);
+
+	useEffect(() => {
+		productDispatch({type: "SET_SEARCH_TERM", payload: debouncedSearchVal});
+	}, [debouncedSearchVal]);
     
     const logoutHandler = () => {
         logoutUser();
@@ -72,7 +80,7 @@ export function Navbar(){
         </nav>
         <div className="search-box">
             <i className="fas fa-search"></i>
-            <input type="text" placeholder="Search" />
+            <input type="text" placeholder="Search" onChange={({target})=>setSearchVal(target.value)} />
         </div>
         <nav className="navigation">
             <ul>

@@ -2,6 +2,7 @@ import {createContext, useContext, useReducer, useState} from "react";
 import { cartReducer } from "../reducer";
 import axios from "axios";
 import { useAuth } from "./auth-context";
+import { toast } from "react-toastify";
 
 const CartContext = createContext(null);
 
@@ -43,6 +44,7 @@ const CartProvider = ({children}) => {
                 data: {product: postData},
                 headers: {authorization: encodedToken}
             });
+            toast.success("Added to cart");
             if(status===201){
                 cartDispatch({type:"SET_CART", payload: data.cart})
             }
@@ -58,6 +60,7 @@ const CartProvider = ({children}) => {
                 url: `/api/user/cart/${id}`,
                 headers: {authorization: encodedToken}
             });
+            toast.info("Removed from cart");
             if(status===200){
                 cartDispatch({type:"SET_CART", payload: data.cart})
             }
