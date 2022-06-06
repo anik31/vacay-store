@@ -39,7 +39,7 @@ function App() {
   return (
     <div className="App">
         <Navbar/>
-        <ToastContainer theme="light" autoClose={1000} position="bottom-right"/>
+        <ToastContainer theme="light" autoClose={2000} position="bottom-right"/>
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/products" element={<Products/>}/>

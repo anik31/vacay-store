@@ -31,8 +31,8 @@ const CartProvider = ({children}) => {
             if(status===200){
                 cartDispatch({type:"SET_CART", payload: data.cart})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
       
@@ -48,8 +48,8 @@ const CartProvider = ({children}) => {
             if(status===201){
                 cartDispatch({type:"SET_CART", payload: data.cart})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
       
@@ -64,8 +64,8 @@ const CartProvider = ({children}) => {
             if(status===200){
                 cartDispatch({type:"SET_CART", payload: data.cart})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
 
@@ -80,7 +80,7 @@ const CartProvider = ({children}) => {
           }
           cartDispatch({type: "SET_CART", payload: []});
         } catch (error) {
-          console.error("Error in clear cart service", error);
+            toast.error(error.response.data.errors[0]);
         }
     }
       
@@ -95,8 +95,8 @@ const CartProvider = ({children}) => {
             if(status===200){
                 cartDispatch({type:"SET_CART", payload: data.cart})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
 

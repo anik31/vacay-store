@@ -28,7 +28,7 @@ const AuthProvider = ({children}) => {
                 localStorage.setItem("encodedToken", encodedToken);
                 }
             } catch (error) {
-                console.error("Error in login user", error);
+                toast.error(error.response.data.errors[0]);
             }
     };
     
@@ -48,11 +48,11 @@ const AuthProvider = ({children}) => {
                 localStorage.setItem("encodedToken", encodedToken);
             }
         } catch (error) {
-          console.error("Error in login user", error);
+            toast.error(error.response.data.errors[0]);
         }
     };
     const logoutUser = () => {
-        toast.info("Logout successful");
+        toast.info("Logged out");
         setIsLoggedIn(false);
         setToken("");
         setUser({});
