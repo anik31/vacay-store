@@ -85,7 +85,7 @@ export function Navbar(){
             <input type="text" placeholder="Search" value={searchVal}
             onChange={({target})=>{
                 pathname!=="/products" && navigate("/products")
-                setSearchVal(target.value.trim())
+                setSearchVal(target.value)
             }} />
         </div>
         <nav className="navigation">

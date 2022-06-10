@@ -43,11 +43,11 @@ export function Signup(){
         </div>
         <div className="input input-text">
             <label>First name</label>
-            <input type="text" value={credentials.firstName} placeholder="First name" onChange={(e)=>setCredentials(prev=>({...prev, firstName: e.target.value.trim()}))} />
+            <input type="text" value={credentials.firstName} placeholder="First name" onChange={(e)=>setCredentials(prev=>({...prev, firstName: e.target.value}))} />
         </div>
         <div className="input input-text">
             <label>Last name</label>
-            <input type="text" value={credentials.lastName} placeholder="Last name" onChange={(e)=>setCredentials(prev=>({...prev, lastName: e.target.value.trim()}))} />
+            <input type="text" value={credentials.lastName} placeholder="Last name" onChange={(e)=>setCredentials(prev=>({...prev, lastName: e.target.value}))} />
         </div>
         <div className="input input-text">
             <label>Password</label>
