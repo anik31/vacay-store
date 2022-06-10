@@ -1,6 +1,7 @@
 import "./addressForm.css";
 import { useState } from "react";
 import {useAddress} from "../../context";
+import { toast } from "react-toastify";
 
 export function AddressForm(){
     const {setIsAddressFormVisible, addToAddress} = useAddress();
@@ -20,8 +21,12 @@ export function AddressForm(){
     }
     
     const createAddressHandler = () => {
-        addToAddress(address);
-        setIsAddressFormVisible(false);
+        if(address.name.trim() && address.street.trim() && address.pincode.trim() && address.city.trim() && address.state.trim()){
+            addToAddress(address);
+            setIsAddressFormVisible(false);
+        }else{
+            toast.warning("Fill all fields");
+        }
     };
 
     return (

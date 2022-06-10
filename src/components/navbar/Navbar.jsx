@@ -29,7 +29,7 @@ export function Navbar(){
     const debouncedSearchVal = useDebounce(searchVal, 300);
 
 	useEffect(() => {
-		productDispatch({type: "SET_SEARCH_TERM", payload: debouncedSearchVal});
+		productDispatch({type: "SET_SEARCH_TERM", payload: debouncedSearchVal.trim()});
 	}, [debouncedSearchVal]);
     
     const logoutHandler = () => {
