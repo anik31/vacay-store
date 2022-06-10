@@ -1,12 +1,10 @@
 import "./auth.css";
-import {Link, useLocation, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {useState} from "react";
 import {useAuth} from "../../context";
 
 export function Login(){
     const {loginUser} = useAuth();
-    const navigate = useNavigate();
-    const location = useLocation();
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [credentials, setCredentials] = useState({
         email: "",
@@ -18,7 +16,7 @@ export function Login(){
     };
     const [errMsg, setErrMsg] = useState("");
 
-    const passwordVisibilityHandler = (e) => setIsPasswordVisible(prev=> !prev);
+    const passwordVisibilityHandler = () => setIsPasswordVisible(prev=> !prev);
 
     const loginHandler = () => {
         if(!credentials.email || !credentials.password){
@@ -41,13 +39,13 @@ export function Login(){
             <div className="input input-text">
                 <label>Email address</label>
                 <input type="email" value={credentials.email} 
-                placeholder="example@gmail.com" onChange={(e)=>{setCredentials(prev=>({...prev, email:e.target.value}))}} />
+                placeholder="example@gmail.com" onChange={(e)=>{setCredentials(prev=>({...prev, email:e.target.value.trim()}))}} />
             </div>
             <div className="input input-text">
                 <label>Password</label>
                 <div className="password-wrapper">
                     <input type={isPasswordVisible?"text":"password"} 
-                    value={credentials.password} placeholder="password" onChange={(e)=>{setCredentials(prev=>({...prev, password:e.target.value}))}} />
+                    value={credentials.password} placeholder="password" onChange={(e)=>{setCredentials(prev=>({...prev, password:e.target.value.trim()}))}} />
                     <button onClick={passwordVisibilityHandler}>
                     {isPasswordVisible
                     ? <i className="far fa-eye-slash"></i>
