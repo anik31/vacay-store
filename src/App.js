@@ -14,13 +14,17 @@ function App() {
   const {getCartData, setCheckoutDetails} = useCart();
   const {getWishlistData} = useWishlist();
   const {getAddressData, addressState} = useAddress();
-  const {token} = useAuth();
+  const {token, verifyUser} = useAuth();
+  const encodedToken = localStorage.getItem("encodedToken");
 
   useScrollToTop();
   
   useEffect(()=>{
     getProducts();
     getCategories();
+    if(encodedToken){
+      verifyUser(encodedToken);
+    }
   },[])
   
   useEffect(()=>{

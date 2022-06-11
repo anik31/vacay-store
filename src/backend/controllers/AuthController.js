@@ -112,7 +112,7 @@ export const loginHandler = function (schema, request) {
 
  export const verifyUser = function (schema, request) {
   const { encodedToken } = JSON.parse(request.requestBody);
-  const decodedToken = jwt_decode(
+  const decodedToken = jwt.verify(
       encodedToken,
       process.env.REACT_APP_JWT_SECRET
   );
