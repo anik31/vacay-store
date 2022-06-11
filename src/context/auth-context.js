@@ -11,9 +11,11 @@ const AuthProvider = ({children}) => {
     const [token, setToken] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
+    const [isAuthLoading, setIsAuthLoading] = useState(false);
 
     const loginUser = async (credentials) => {
             try {
+                setIsAuthLoading(true);
                 const {data: { foundUser, encodedToken }, status } = await axios({
                     method: "post",
                     data: credentials,
@@ -29,11 +31,14 @@ const AuthProvider = ({children}) => {
                 }
             } catch (error) {
                 toast.error(error.response.data.errors[0]);
+            }finally{
+                setIsAuthLoading(false);
             }
     };
     
     const signUpUser = async (credentials) => {
         try {
+            setIsAuthLoading(true);
             const {data: { createdUser, encodedToken }, status } = await axios({
                 method: "post",
                 data: credentials,
@@ -49,8 +54,31 @@ const AuthProvider = ({children}) => {
             }
         } catch (error) {
             toast.error(error.response.data.errors[0]);
+        }finally{
+            setIsAuthLoading(false);
         }
     };
+
+    const verifyUser = async (encodedToken) => {
+        try {
+            setIsAuthLoading(true);
+            const {data, status } = await axios({
+                method: "post",
+                data: {encodedToken},
+                url: "/api/auth/verify"
+            });
+            if (status === 201) {
+                setIsLoggedIn(true);
+                setToken(encodedToken);
+                setUser(data);
+            }
+        } catch (error) {
+            toast.error(error.response.data.errors[0]);
+        }finally{
+            setIsAuthLoading(false);
+        }
+    };
+
     const logoutUser = () => {
         toast.info("Logged out");
         setIsLoggedIn(false);
@@ -58,8 +86,10 @@ const AuthProvider = ({children}) => {
         setUser({});
         localStorage.setItem("encodedToken", "");
     };
+
     return (
-        <AuthContext.Provider value={{isLoggedIn, user, token, loginUser, logoutUser, signUpUser}}>
+        <AuthContext.Provider value={{isLoggedIn, isAuthLoading, user, token, 
+        loginUser, logoutUser, signUpUser, verifyUser}}>
             {children}
         </AuthContext.Provider>
     );

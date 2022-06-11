@@ -4,6 +4,14 @@ import "./products.css";
 import { getSortedData, getFilteredData, getSearchedData } from "../../utils";
 import { Filter } from "./Filter";
 import {useState} from "react";
+import MoonLoader from "react-spinners/MoonLoader";
+import { css } from "@emotion/react";
+
+const override = css`
+  display: block;
+  margin: 10rem auto;
+  border-color: var(--primary-color);
+`;
 
 export function Products(){
     const {productState} = useProducts();
@@ -20,11 +28,16 @@ export function Products(){
                 <h2 className="page-title">Showing {searchedData.length} Products</h2>
                 <button className="btn btn-primary-outline btn-filter" onClick={()=>setIsFilterVisible(prev=>!prev)}>
                 <i className="btn-icon btn-primary-icon fas fa-filter"></i>Sort | Filter</button>
+                {productState.isProductsLoading
+                ? <MoonLoader color={`var(--primary-color)`} css={override} size={60}/>
+                : <> 
                 { searchedData.length > 0
                 ?   <div className="product-cards-container">
                         {searchedData.map(item=><ProductCard key={item._id} value={item} />)}
                     </div>
                 : <p className="empty-state">No Products Found</p>
+                }
+                </>
                 }
             </main>
         </div>

@@ -3,9 +3,17 @@ import { CartCard } from "./CartCard";
 import { PriceCard } from "./PriceCard";
 import {useCart} from "../../context";
 import {EmptyCart} from "./EmptyCart";
+import MoonLoader from "react-spinners/MoonLoader";
+import { css } from "@emotion/react";
+
+const override = css`
+  display: block;
+  margin: 10rem auto;
+  border-color: var(--primary-color);
+`;
 
 export function Cart(){
-    const {cartState} = useCart();
+    const {cartState, isCartLoading} = useCart();
     let priceObj = {
         quantity:0,
         markedPrice:0,
@@ -16,6 +24,9 @@ export function Cart(){
     return (
         <>
         <h2 className="page-title">My Cart {cartState.length>0 && <span>({cartState.length})</span>}</h2>
+        {isCartLoading
+        ? <MoonLoader color={`var(--primary-color)`} css={override} size={60}/>
+        : <>
         {cartState.length>0
         ? <div className="grid-container-cart">
             <div className="card-wrapper-cart">
@@ -32,6 +43,8 @@ export function Cart(){
             <PriceCard value={priceObj} />
         </div>
         : <EmptyCart/>}
+        </>
+        }
         </>
     );
 }

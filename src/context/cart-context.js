@@ -20,9 +20,11 @@ const CartProvider = ({children}) => {
         }
     });
     const [order, setOrder] = useState({});
+    const [isCartLoading, setIsCartLoading] = useState(false);
 
     const getCartData = async() => {
         try{
+            setIsCartLoading(true);
             const {status, data} = await axios({
                 method: "get",
                 url: "/api/user/cart",
@@ -33,6 +35,8 @@ const CartProvider = ({children}) => {
             }
         }catch(error){
             toast.error(error.response.data.errors[0]);
+        }finally{
+            setIsCartLoading(false);
         }
     }
       
@@ -102,7 +106,7 @@ const CartProvider = ({children}) => {
 
     return (
         <CartContext.Provider value={{
-            cartState, cartDispatch,
+            cartState, cartDispatch, isCartLoading,
             getCartData, addToCart, removeFromCart, clearCart, updateItemQuantity,
             checkoutDetails, setCheckoutDetails,
             order, setOrder
