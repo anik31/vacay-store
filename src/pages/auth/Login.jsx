@@ -2,9 +2,17 @@ import "./auth.css";
 import {Link} from "react-router-dom";
 import {useState} from "react";
 import {useAuth} from "../../context";
+import MoonLoader from "react-spinners/MoonLoader";
+import { css } from "@emotion/react";
+
+const override = css`
+  display: block;
+  margin: 10rem auto;
+  border-color: var(--primary-color);
+`;
 
 export function Login(){
-    const {loginUser} = useAuth();
+    const {loginUser, isAuthLoading} = useAuth();
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [credentials, setCredentials] = useState({
         email: "",
@@ -33,7 +41,9 @@ export function Login(){
 
     return (
         <div className="container-auth">
-            <div className="form box-shadow">
+        {isAuthLoading
+        ? <MoonLoader color={`var(--primary-color)`} css={override} size={60}/>
+        : <div className="form box-shadow">
             <h3>Login</h3>
             {errMsg && <p className="err-msg">{errMsg}</p>}
             <div className="input input-text">
@@ -57,6 +67,7 @@ export function Login(){
             <button className="btn btn-primary-outline" onClick={testLoginHandler}>Test Login</button>
             <Link to="/signup" className="btn btn-secondary-icon-text-no-border">Create New Account <i className="fas fa-chevron-right"></i></Link>
             </div>
+        }
         </div>
     );
 }

@@ -1,5 +1,9 @@
 export function productReducer(state, action){
     switch(action.type){
+        case "SET_PRODUCTS_LOADING":
+            return {...state, isProductsLoading: action.payload};
+        case "SET_CATEGORIES_LOADING":
+            return {...state, isCategoriesLoading: action.payload};
         case "SET_PRODUCTS":
             return {...state, products: action.payload};
         case "SET_CATEGORIES":

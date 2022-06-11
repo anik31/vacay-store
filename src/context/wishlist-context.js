@@ -1,4 +1,4 @@
-import {createContext, useContext, useReducer} from "react";
+import {createContext, useContext, useReducer, useState} from "react";
 import { wishlistReducer } from "../reducer";
 import axios from "axios";
 import { useAuth } from "./auth-context";
@@ -9,9 +9,11 @@ const WishlistContext = createContext(null);
 const WishlistProvider = ({children}) => {
     const [wishlistState, wishlistDispatch] = useReducer(wishlistReducer, []);
     const {token: encodedToken} = useAuth();
+    const [isWishlistLoading, setIsWishlistLoading] = useState(false);
 
     const getWishlistData = async() => {
         try{
+            setIsWishlistLoading(true);
             const {status, data} = await axios({
                 method: "get",
                 url: "/api/user/wishlist",
@@ -22,6 +24,8 @@ const WishlistProvider = ({children}) => {
             }
         }catch(error){
             toast.error(error.response.data.errors[0]);
+        }finally{
+            setIsWishlistLoading(false);
         }
     }
   
@@ -60,7 +64,7 @@ const WishlistProvider = ({children}) => {
 
     return (
         <WishlistContext.Provider value={{
-            wishlistState, wishlistDispatch, 
+            wishlistState, wishlistDispatch, isWishlistLoading,
             getWishlistData, addToWishlist, removeFromWishlist
         }}>
             {children}

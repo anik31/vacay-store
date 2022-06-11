@@ -14,7 +14,9 @@ const initialState = {
         priceRange: 25000,
         includeOutOfStock: false,
         searchTerm: ""
-    }
+    },
+    isProductsLoading: false,
+    isCategoriesLoading: false
 };
 
 const ProductProvider = ({children}) => {
@@ -22,6 +24,7 @@ const ProductProvider = ({children}) => {
 
     const getProducts = async() => {
         try{
+            productDispatch({type:"SET_PRODUCTS_LOADING",payload: true});
             const {status, data} = await axios({
                 method: "get",
                 url: "/api/products"
@@ -31,11 +34,14 @@ const ProductProvider = ({children}) => {
             }
         }catch(error){
             toast.error(error.response.data.errors[0]);
+        }finally{
+            productDispatch({type:"SET_PRODUCTS_LOADING",payload: false});
         }
     }
 
     const getCategories = async() => {
         try{
+            productDispatch({type:"SET_CATEGORIES_LOADING",payload: true});
             const {status, data} = await axios({
                 method: "get",
                 url: "/api/categories"
@@ -45,6 +51,8 @@ const ProductProvider = ({children}) => {
             }
         }catch(error){
             toast.error(error.response.data.errors[0]);
+        }finally{
+            productDispatch({type:"SET_CATEGORIES_LOADING",payload: false});
         }
     }
 

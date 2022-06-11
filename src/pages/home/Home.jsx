@@ -4,6 +4,14 @@ import "./home.css";
 import { ProductCard } from "../../components";
 import { useProducts } from "../../context";
 import { CategoryCard } from "./CategoryCard";
+import MoonLoader from "react-spinners/MoonLoader";
+import { css } from "@emotion/react";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: var(--primary-color);
+`;
 
 export function Home(){
     const {productState} = useProducts();
@@ -23,17 +31,23 @@ export function Home(){
 
             <section>
                 <h3 className="page-title">DEALS OF THE DAY</h3>
-                <div className="product-cards-container">
+                {productState.isProductsLoading
+                ? <MoonLoader color={`var(--primary-color)`} css={override} size={60}/>
+                : <div className="product-cards-container">
                     { productState.products.length !== 0 && productState.products.filter(item=> item.dealOfTheDay).map(item=><ProductCard key={item._id} value={item} />)}
-                </div>        
+                </div>  
+                }      
             </section>
 
             <section className="categories">
                 <h3 className="page-title">CATEGORIES TO BAG</h3>
-                <div className="categories-container">
+                {productState.isCategoriesLoading
+                ? <MoonLoader color={`var(--primary-color)`} css={override} size={60}/>
+                : <div className="categories-container">
                     { productState.categories.length !== 0 
                     && productState.categories.map(item=><CategoryCard key={item._id} value={item} />)}
                 </div>
+                }
             </section>
         </main>
     );
