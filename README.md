@@ -30,6 +30,7 @@ https://user-images.githubusercontent.com/56336326/162265324-d1fbbc6c-e4bd-445d-
 - Checkout management
 - Payment integration
 - Throttling for button clicks
+- Mobile responsive
 - Authentication
     - Sign up
     - Login
