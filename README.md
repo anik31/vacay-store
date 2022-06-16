@@ -24,8 +24,11 @@ https://user-images.githubusercontent.com/56336326/162265324-d1fbbc6c-e4bd-445d-
     - Low to high
     - High to low
     - Featured
+- Debounced search
 - Wishlist management
 - Cart management
+- Checkout management
+- Payment integration
 - Authentication
     - Sign up
     - Login
