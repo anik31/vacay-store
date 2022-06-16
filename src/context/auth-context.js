@@ -73,7 +73,7 @@ const AuthProvider = ({children}) => {
                 setUser(data);
             }
         } catch (error) {
-            toast.error(error.response.data.errors[0]);
+            console.error(error.response.data.errors[0]);
         }finally{
             setIsAuthLoading(false);
         }
