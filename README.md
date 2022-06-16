@@ -29,6 +29,7 @@ https://user-images.githubusercontent.com/56336326/162265324-d1fbbc6c-e4bd-445d-
 - Cart management
 - Checkout management
 - Payment integration
+- Throttling for button clicks
 - Authentication
     - Sign up
     - Login
